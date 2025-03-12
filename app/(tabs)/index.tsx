@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Colors from '@/constants/Colors';
-import { Image, StyleSheet, SafeAreaView, Text, View, TouchableOpacity, FlatList, Linking } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import icons from '@/constants/icons';
+import { Link } from 'expo-router';
 
 const ICONS1 = [
   { id: 1, name: 'Mulher', icon: icons.mulher, link: 'https://www.google.com' },
@@ -10,6 +11,7 @@ const ICONS1 = [
   { id: 4, name: 'Pet', icon: icons.pet, link: 'https://www.google.com' },
   { id: 5, name: 'Turista', icon: icons.turista, link: 'https://www.google.com' },
 ];
+
 const ICONS2 = [
   { id: 6, name: 'Servidor', icon: icons.servidor, link: 'https://www.google.com' },
   { id: 7, name: 'Empresa', icon: icons.empresa, link: 'https://www.google.com' },
@@ -18,66 +20,73 @@ const ICONS2 = [
   { id: 10, name: 'Geral', icon: icons.geral, link: 'https://www.google.com' },
 ];
 
-export default function HomeScreen() {
-  
+export default function Home() {
   const handlePress = (url: string) => {
-    Linking.openURL(url); 
+    Linking.openURL(url);
   };
-  
-  const [capibas, setCapibas] = useState(320); 
+
+  const [showCapiba, setShowCapiba] = useState(true);
+  const [points, setPoints] = useState(320);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.welcomeText}>Bem-vinda,</Text>
-        <Text style={styles.userName}>Júlia Maya</Text>
-        <View style={styles.capibasContainer}>
-          <Image source={icons.capiCoin} style={styles.moedaIcon} />
-          <Text style={styles.capibasText}>{capibas}</Text>
+        <View style={styles.headerTop}>
+          <TouchableOpacity onPress={() => setShowCapiba(!showCapiba)}>
+  {showCapiba ? (
+    <Image source={icons.eye} style={styles.eyeImage} />
+  ) : (
+    <Image source={icons.eyeSlash} style={styles.eyeImage} />
+  )}
+         </TouchableOpacity>
         </View>
+        <Text style={styles.greeting}>Bem-vinda,</Text>
+        <Text style={styles.userName}>Julia Maya</Text>
+        {showCapiba && (
+          <View style={styles.coinContainer}>
+            <Image source={icons.shinyCoin} style={styles.coinIcon} />
+            <Text style={styles.coinAmount}>{points}</Text>
+            <Link href="/capiba">
+            <Text style={styles.arrow}> &gt; </Text>
+          </Link>
+          </View>
+        )}
+          <View style={styles.yellowLine}></View>
       </View>
-
-      <View style={styles.highlightsContainer}>
-        <Text style={styles.sectionTitle}>Meus Destaques</Text>
-        <View style={styles.highlights}>
-          <View style={styles.highlightBox}></View>
-          <View style={styles.highlightBox}></View>
-          <View style={styles.highlightBox}></View>
+      <Text style={styles.sectionTitle}>Meus Destaques</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
+        <View style={styles.highlightContainer}>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <View key={index} style={styles.highlightBox} />
+          ))}
         </View>
-      </View>
-
-      <View style={styles.audienceContainer}>
-        <Text style={styles.sectionTitle}>Públicos-Alvo</Text>
-        <FlatList
-          data={ICONS1}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.iconButton}
-              onPress={() => handlePress(item.link)} 
-            >
-              <Image source={item.icon} style={styles.iconImage} />
-              <Text style={styles.iconText}>{item.name}</Text>
+      </ScrollView>
+      <Text style={styles.sectionTitle}>Públicos-Alvo</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }} >
+        <View style={styles.iconContainer}>
+          {ICONS1.map((icon) => (
+            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+              <View style={styles.iconBox}>
+                <Image source={icon.icon} style={styles.iconImage} />
+                <Text style={styles.iconLabel}>{icon.name}</Text>
+              </View>
             </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id.toString()}
-          horizontal={true}
-          />
-          <FlatList
-          data={ICONS2}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.iconButton}
-              onPress={() => handlePress(item.link)} 
-            >
-              <Image source={item.icon} style={styles.iconImage} />
-              <Text style={styles.iconText}>{item.name}</Text>
+          ))}
+        </View>
+      </ScrollView>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
+        <View style={styles.iconContainer}>
+          {ICONS2.map((icon) => (
+            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+              <View style={styles.iconBox}>
+                <Image source={icon.icon} style={styles.iconImage} />
+                <Text style={styles.iconLabel}>{icon.name}</Text>
+              </View>
             </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id.toString()}
-          horizontal={true}
-          />
-      </View>
-    </SafeAreaView>
+          ))}
+        </View>
+      </ScrollView>
+    </ScrollView>
   );
 }
 
@@ -85,78 +94,106 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
   },
   header: {
-    backgroundColor: Colors.lightBlue, 
-    marginTop: 20,
-    alignItems: 'center',
+    backgroundColor: Colors.lightBlue,
+    paddingTop: 48,
   },
-  welcomeText: {
-    fontSize: 18,
-    color: '#fff',
+  eyeImage: {
+    width: 32,
+    height: 32,
+    resizeMode: 'contain',
+    marginRight: 16,
+  },
+  yellowLine: {
+    height: 4,
+    backgroundColor: Colors.capiYellow,
+    width: '80%',
+    alignSelf: 'flex-start',
+  },
+  headerTop: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 16,
+    paddingRight: 8,
+  },
+  greeting: {
+    fontSize: 20,
+    color: 'white',
+    paddingLeft: 16,
   },
   userName: {
-    fontSize: 22,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff',
+    color: 'white',
+    paddingLeft: 16,
+    paddingBottom: 12,
   },
-  capibasContainer: {
+  coinContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 10,
+    marginBottom: -24,
+    zIndex: 100,
   },
-  moedaIcon: {
-    width: 50,
-    height: 50,
+  coinIcon: {
+    width: 80,
+    height: 80,
+    resizeMode: 'contain',
   },
-  capibasText: {
-    fontSize: 30,
+  coinAmount: {
+    fontSize: 36,
     fontWeight: 'bold',
-    marginLeft: 10,
-    color: '#fff',
+    color: 'white',
+    marginBottom: 8,
   },
-  highlightsContainer: {
-    marginTop: 30,
+  arrow: {
+    fontSize: 28,
+    fontWeight: '300',
+    color: 'white',
+    marginBottom: 16,
   },
   sectionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 10,
     color: Colors.lightBlue,
+    marginVertical: 16,
+    marginLeft: 16,
   },
-  highlights: {
+  highlightContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   highlightBox: {
-    width: 100,
+    width: 150,
     height: 100,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 10,
+    backgroundColor: Colors.lightBlue,
+    marginLeft: 16,
+    borderRadius: 8,
   },
-  audienceContainer: {
-    marginTop: 30,
+  iconContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 16,
+    paddingVertical: 0,
   },
-  iconButton: {
+  iconBox: {
+    width: 120, 
+    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 10,
-    width: 100,
-    height: 100,
-    borderRadius: 10,
-    backgroundColor: '#fff',
+    padding: 8,
+    borderWidth: 3,
     borderColor: Colors.lightBlue,
-    borderWidth: 2,
+    marginRight: 16,
+    borderRadius: 8,
+    marginBottom: 16,
   },
   iconImage: {
     width: 40,
     height: 40,
     resizeMode: 'contain',
   },
-  iconText: {
-    marginTop: 5,
-    fontSize: 16,
+  iconLabel: {
+    fontSize: 12,
+    marginTop: 8,
     color: Colors.lightBlue,
     fontWeight: 'bold',
   },

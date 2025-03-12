@@ -28,4 +28,5 @@ export default {
   textRed: '#D32F2F',
   textOrange: '#FFA726',
   lightBlue: '#0F56BF',
+  capiYellow: '#FFDB29',
 };

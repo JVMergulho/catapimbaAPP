@@ -17,5 +17,8 @@ export default {
     pet: require("@/assets/icons/pet.png"),
     servidor: require("@/assets/icons/servidor.png"),
     turista: require("@/assets/icons/turista.png"),
+    eye: require("@/assets/icons/eye.png"),
+    eyeSlash: require("@/assets/icons/eyeSlash.png"),
+    shinyCoin: require("@/assets/icons/shinyCoin.png"),
   };
   
