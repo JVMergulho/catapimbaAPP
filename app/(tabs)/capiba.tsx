@@ -1,18 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import {ChallengeButton} from '@/components/ChallengeButton';
 import icons from '@/constants/icons';
 import images from '@/constants/images';
 import colors from '@/constants/Colors';
 import * as Progress from 'react-native-progress';
+import { serviceType, ServiceType } from '@/constants/serviceType';
 
 const CapibaScreen = () => {
   return (
     <ScrollView style={styles.container}>
       {/* Cabeçalho */}
-      <Text style={styles.greeting}>Olá, Fred Oslon!</Text>
+      <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'space-between'}}>
+        <Text style={styles.greeting}>Olá, Fred Oslon!</Text>
+
+        <TouchableOpacity style={[styles.capsuleButton, {justifyContent: 'center'}]}> 
+          <Image style={{width: 18, height: 15}} source={icons.crown} />
+          <Text style ={{fontWeight: 'bold', fontSize: 14, color: colors.textOrange}}>
+            Ranking Capiba
+          </Text>
+        </TouchableOpacity>
+
+      </View>
 
       <View style={styles.balanceCard}>
-
         <View >
 
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -34,52 +45,64 @@ const CapibaScreen = () => {
       <Text style={styles.sectionTitle}>Suas metas mensais</Text>
       <View style={styles.progressContainer}>
 
-      <CircularProgressWithImage progress={0.6} imageSource={icons.ambiente} color={colors.textGreen} />
-      <CircularProgressWithImage progress={0.8} imageSource={icons.saude} color={colors.textRed} />
-      <CircularProgressWithImage progress={0.2} imageSource={icons.solPessoa} color={colors.textOrange}/>
+      <CircularProgressWithImage progress={0.6} type='ambiente' />
+
+      <CircularProgressWithImage progress={0.8} type='saude' />
+
+      <CircularProgressWithImage progress={0.2} type='cidadania' />
 
       </View>
 
       {/* Desafios Pendentes */}
-      <Text style={styles.sectionTitle}>Desafios pendentes</Text>
-      <View style={styles.challengeList}>
-        <ChallengeButton title="ANDAR DE BIKE" subtitle="Pedale para um futuro mais limpo!" color="#4CAF50" />
-        <ChallengeButton title="EXAME DE ROTINA" subtitle="Prevenção é o melhor cuidado!" color="#D32F2F" />
+      <View style={ styles.challengeTitleContainer}>
+        <Text style={{fontSize: 16, color: colors.textBlue}}>Desafios pendentes</Text>
+        <Text style={{ color: colors.textBlue, textDecorationLine: "underline" }}>Ver todos desafios</Text>
       </View>
 
-      {/* Ver Todos */}
-      <TouchableOpacity>
-        <Text style={styles.viewAll}>Ver todos desafios →</Text>
-      </TouchableOpacity>
+      <View style={styles.challengeList}>
+        <ChallengeButton title="ANDAR DE BIKE" subtitle="Pedale para um futuro mais limpo!" type="ambiente" />
+        <ChallengeButton title="EXAME DE ROTINA" subtitle="Prevenção é o melhor cuidado!" type="saude" />
+      </View>
+
+      <Text style={styles.sectionTitle}>Feirinha Capiba</Text>
+
+      <View style = {styles.feiraCard}>
+        <Image source={images.cupom} style={{ width: 80, height: 80 }} />
+        <View style={{ width: 175 }}>
+          <Text style={{ color: '#FFF', fontSize: 14, fontWeight: 'bold', marginBottom: 4 }}>Troque suas capibas por prêmios!</Text>
+          <Text style={{ color: '#FFF', fontSize: 12 }}>Com os maiores parceiros em linha reta do mundo.</Text>
+        </View>
+        <Image source={images.gift} style={{ width: 80, height: 80, resizeMode: 'contain' }} />
+      </View>
+
+      <Text style={styles.sectionTitle}>Capi-amigos</Text>
+
+      <View style={{ alignItems: 'center'}}>
+        <Text style={[styles.description, {marginBottom: 60}]}>
+          Você ainda não adicionou ninguém ao seu círculo
+        </Text>
+      </View>
+
     </ScrollView>
   );
 };
 
-// Componente Botão de Desafio
-const ChallengeButton = ({ title, subtitle, color }: { title: string; subtitle: string; color: string }) => (
-  <TouchableOpacity style={[styles.challengeButton, { backgroundColor: "#F9F8F5" }]}>
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-    <View style={{ flexDirection: 'row', gap: 20, alignItems: 'center' }}>
-      <Image source={icons.ambiente} style={{width: 38, height: 38}}/>
-      <View>
-        <Text style={{color: color, fontWeight: 'bold'}}>{title}</Text>
-        <Text style={{color: color, fontSize: 12}}>{subtitle}</Text>
-      </View>
-    </View>
-    <Image source={icons.arrowGreen} style={{width: 14, height: 14}}/>
-    </View>
+const CircularProgressWithImage = ({ progress, type}: { progress: number; type: ServiceType }) => {
+  const service = serviceType[type] ?? { color: "#000", icon: icons.ambiente};
 
-  </TouchableOpacity>
-);
-
-const CircularProgressWithImage = ({ progress, imageSource, color }: { progress: number; imageSource: any; color: string }) => {
   return (
-    <View style={styles.progressImageContainer}>
-      {/* Barra de progresso circular */}
-      <Progress.Circle size={80} progress={progress} color={color} thickness={6} borderWidth={2} />
-      
-      {/* Imagem centralizada dentro do círculo */}
-      <Image source={imageSource} style={styles.imageIcon} />
+    <View style={styles.progressItem}>
+      <View style={styles.progressImageContainer}>
+        {/* Barra de progresso circular */}
+        <Progress.Circle size={80} progress={progress} color={service.color} thickness={6} borderWidth={2} />
+        
+        {/* Imagem centralizada dentro do círculo */}
+        <Image source={service.icon} style={styles.imageIcon} />
+      </View>
+      <View style={styles.progressDescription}>
+          <Text>{progress*100}%</Text>
+          <Text style={styles.description}>Meio ambiente</Text>
+        </View>
     </View>
   );
 };
@@ -143,17 +166,40 @@ const styles = StyleSheet.create({
     marginTop: -16,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginTop: 20,
+    fontSize: 16,
+    color: colors.darkBlue,
+    fontWeight: 'semibold',
+    marginBottom: 12,
+    marginTop: 28,
+  },
+  challengeTitleContainer: {
+    marginBottom: 12,
+    marginTop: 28,
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center'
+  },
+  progressDescription:{
+    alignItems: 'center',
   },
   progressContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 10,
   },
+  capsuleButton:{
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    gap: 8, 
+    width: 160, 
+    height: 30, 
+    backgroundColor: '#FFDB29', 
+    borderRadius: 15, 
+    padding: 5
+  },
   progressItem: {
     alignItems: 'center',
+    gap: 10,
   },
   progressText: {
     marginTop: 5,
@@ -177,10 +223,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#FFF',
   },
-  viewAll: {
-    color: '#1E40AF',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 10,
+  description:{
+    color: colors.textGray,
+    fontSize: 12,
   },
+  feiraCard:{
+    flexDirection: 'row', 
+    height: 98,
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    backgroundColor: colors.darkBlue, 
+    borderRadius: 10,
+  }
 });

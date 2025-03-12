@@ -27,4 +27,7 @@ export default {
   textGreen: '#4CAF50',
   textRed: '#D32F2F',
   textOrange: '#FFA726',
+  darkBlue: '#0F47AF',
+  lightBlue: '#1658C8',
+  textGray: '#707C81',
 };
