@@ -18,7 +18,7 @@ const ICONS2 = [
   { id: 10, name: 'Geral', icon: icons.geral, link: 'https://www.google.com' },
 ];
 
-export default function HomeScreen() {
+export default function Ranking() {
   
   const handlePress = (url: string) => {
     Linking.openURL(url); 
@@ -53,7 +53,7 @@ export default function HomeScreen() {
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.iconButton}
-              onPress={() => handlePress(item.link)} 
+             // onPress={() => handlePress(item.link)} 
             >
               <Image source={item.icon} style={styles.iconImage} />
               <Text style={styles.iconText}>{item.name}</Text>
@@ -67,7 +67,7 @@ export default function HomeScreen() {
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.iconButton}
-              onPress={() => handlePress(item.link)} 
+             // onPress={() => handlePress(item.link)} 
             >
               <Image source={item.icon} style={styles.iconImage} />
               <Text style={styles.iconText}>{item.name}</Text>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: Colors.lightBlue, 
     marginTop: 20,
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   welcomeText: {
     fontSize: 18,

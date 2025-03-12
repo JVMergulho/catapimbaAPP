@@ -7,5 +7,15 @@ export default {
     arrowRed: require("@/assets/icons/arrowRed.png"),
     arrowGreen: require("@/assets/icons/arrowGreen.png"),
     arrowOrange: require("@/assets/icons/arrowOrange.png"),
+    crianca: require("@/assets/icons/crianca.png"),
+    empresa: require("@/assets/icons/empresa.png"),
+    geral: require("@/assets/icons/geral.png"),
+    jovem: require("@/assets/icons/jovem.png"),
+    idoso: require("@/assets/icons/idoso.png"),
+    mulher: require("@/assets/icons/mulher.png"),
+    pcd: require("@/assets/icons/pcd.png"),
+    pet: require("@/assets/icons/pet.png"),
+    servidor: require("@/assets/icons/servidor.png"),
+    turista: require("@/assets/icons/turista.png"),
   };
   
