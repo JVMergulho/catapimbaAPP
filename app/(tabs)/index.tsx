@@ -147,10 +147,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   arrow: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '300',
     color: 'white',
-    marginBottom: 16,
   },
   sectionTitle: {
     fontSize: 20,
