@@ -26,5 +26,7 @@ export default {
     check: require("@/assets/icons/check.png"),
     arrowWhite: require("@/assets/icons/arrowWhite.png"),
     pin: require("@/assets/icons/pin.png"),
+    capiCoinSilver: require("@/assets/icons/capiCoinSilver.png"),
+    capiCoinBronze: require("@/assets/icons/capiCoinBronze.png"),
   };
   
