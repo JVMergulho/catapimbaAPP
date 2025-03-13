@@ -1,138 +1,199 @@
-import { Link } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, SafeAreaView, FlatList, Text, View, Button } from 'react-native';
-import * as Progress from 'react-native-progress'; // Biblioteca para a barra de progresso
+import Colors from '@/constants/Colors';
+import { Image, StyleSheet, Text, View, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import icons from '@/constants/icons';
+import { Link } from 'expo-router';
 
-const DATA = ['Recicle', 'Reutilize', 'Reduza', 'Recuse', 'Repense'];
+const ICONS1 = [
+  { id: 1, name: 'Mulher', icon: icons.mulher, link: 'https://www.google.com' },
+  { id: 2, name: 'Idoso', icon: icons.idoso, link: 'https://www.google.com' },
+  { id: 3, name: 'PCD', icon: icons.pcd, link: 'https://www.google.com' },
+  { id: 4, name: 'Pet', icon: icons.pet, link: 'https://www.google.com' },
+  { id: 5, name: 'Turista', icon: icons.turista, link: 'https://www.google.com' },
+];
 
-export default function HomeScreen() {
-  const [progress, setProgress] = useState(0.3); // Estado inicial da barra
+const ICONS2 = [
+  { id: 6, name: 'Servidor', icon: icons.servidor, link: 'https://www.google.com' },
+  { id: 7, name: 'Empresa', icon: icons.empresa, link: 'https://www.google.com' },
+  { id: 8, name: 'Criança', icon: icons.crianca, link: 'https://www.google.com' },
+  { id: 9, name: 'Jovem', icon: icons.jovem, link: 'https://www.google.com' },
+  { id: 10, name: 'Geral', icon: icons.geral, link: 'https://www.google.com' },
+];
 
-  // Simula o carregamento ao clicar no botão (você pode substituir isso pela sua lógica)
-  const increaseProgress = () => {
-    setProgress((prev) => (prev < 1 ? prev + 0.1 : 1)); // Aumenta até 100%
+export default function Home() {
+  const handlePress = (url: string) => {
+    Linking.openURL(url);
   };
 
+  const [showCapiba, setShowCapiba] = useState(true);
+  const [points, setPoints] = useState(320);
+
   return (
-    <SafeAreaView style={styles.container}>
-
-      <View>
-        <Text style={styles.scoreText}>$ {(progress * 1000).toFixed(0)}</Text>
-
-        <Progress.Bar progress={progress} 
-          width={300} 
-          height={40}
-          color="#4CAF50" 
-          borderRadius={10}
-          style={styles.progressBar} />
-      </View>
-
-      <View style={styles.progressWrapper}>
-        <ProgressToGoal progress={0.6} />
-        <ProgressToGoal progress={0.4} />
-        <ProgressToGoal progress={0.1} />
-      </View>
-
-      <View> 
-        <View style={styles.titleContainer}>
-          <Text style={styles.text}>Serviços Sugeridos</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.headerTop}>
+          <TouchableOpacity onPress={() => setShowCapiba(!showCapiba)}>
+  {showCapiba ? (
+    <Image source={icons.eye} style={styles.eyeImage} />
+  ) : (
+    <Image source={icons.eyeSlash} style={styles.eyeImage} />
+  )}
+         </TouchableOpacity>
         </View>
-
-        <View>
-          <View style={styles.listsArea}>
-            <ScrollList DATA={DATA} />
-            <ScrollList DATA={DATA} />
+        <Text style={styles.greeting}>Bem-vinda,</Text>
+        <Text style={styles.userName}>Julia Maya</Text>
+        {showCapiba && (
+          <View style={styles.coinContainer}>
+            <Image source={icons.shinyCoin} style={styles.coinIcon} />
+            <Text style={styles.coinAmount}>{points}</Text>
+            <Link href="/capiba">
+            <Text style={styles.arrow}> &gt; </Text>
+          </Link>
           </View>
-        </View>
+        )}
+          <View style={styles.yellowLine}></View>
       </View>
-
-    </SafeAreaView>
+      <Text style={styles.sectionTitle}>Meus Destaques</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
+        <View style={styles.highlightContainer}>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <View key={index} style={styles.highlightBox} />
+          ))}
+        </View>
+      </ScrollView>
+      <Text style={styles.sectionTitle}>Públicos-Alvo</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }} >
+        <View style={styles.iconContainer}>
+          {ICONS1.map((icon) => (
+            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+              <View style={styles.iconBox}>
+                <Image source={icon.icon} style={styles.iconImage} />
+                <Text style={styles.iconLabel}>{icon.name}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
+        <View style={styles.iconContainer}>
+          {ICONS2.map((icon) => (
+            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+              <View style={styles.iconBox}>
+                <Image source={icon.icon} style={styles.iconImage} />
+                <Text style={styles.iconLabel}>{icon.name}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
+    </ScrollView>
   );
-}
-
-function ProgressToGoal({ progress }: { progress: number }) {
-  return(
-    <Progress.Circle 
-    size={80}         
-    progress={progress} 
-    color="#4CAF50"  
-    borderWidth={2}  
-    thickness={6}    
-    showsText={true}  
-    textStyle={{ fontSize: 18 }} 
-  />
-  )
-}
-
-function ScrollList(
-  { DATA }: { DATA: string[] },
-) {
-  return (
-    <FlatList
-      data={DATA}
-      renderItem={({ item }) => (
-        <Link style={styles.item} href = "/service">
-          <Text style={styles.itemText}>{item}</Text>
-        </Link>
-      )}
-      keyExtractor={(item) => item}
-      horizontal={true} 
-      showsHorizontalScrollIndicator={false} 
-      contentContainerStyle={styles.listContainer}
-    />
-  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
-  titleContainer: {
-    alignItems: 'center',
-    marginBottom: 20,
-    marginTop: 40,
+  header: {
+    backgroundColor: Colors.lightBlue,
+    paddingTop: 48,
   },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
+  eyeImage: {
+    width: 32,
+    height: 32,
+    resizeMode: 'contain',
+    marginRight: 16,
   },
-  scoreText: {
+  yellowLine: {
+    height: 4,
+    backgroundColor: Colors.capiYellow,
+    width: '80%',
+    alignSelf: 'flex-start',
+  },
+  headerTop: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 16,
+    paddingRight: 8,
+  },
+  greeting: {
+    fontSize: 20,
+    color: 'white',
+    paddingLeft: 16,
+  },
+  userName: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 10,
+    color: 'white',
+    paddingLeft: 16,
+    paddingBottom: 12,
   },
-  progressBar: {
-    marginBottom: 20,
+  coinContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: -24,
+    zIndex: 100,
   },
-  listContainer: {
-    paddingHorizontal: 10,
+  coinIcon: {
+    width: 80,
+    height: 80,
+    resizeMode: 'contain',
   },
-  item: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    backgroundColor: '#f0f0f0',
-    paddingVertical: 15,
-    height: 136,
-    width: 136,
-    paddingHorizontal: 20,
-    marginHorizontal: 10, // Adiciona espaçamento entre os itens
+  coinAmount: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 8,
+  },
+  arrow: {
+    fontSize: 24,
+    fontWeight: '300',
+    color: 'white',
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: Colors.lightBlue,
+    marginVertical: 16,
+    marginLeft: 16,
+  },
+  highlightContainer: {
+    flexDirection: 'row',
+  },
+  highlightBox: {
+    width: 150,
+    height: 100,
+    backgroundColor: Colors.lightBlue,
+    marginLeft: 16,
     borderRadius: 8,
   },
-  itemText: {
-    fontSize: 18,
-    color: '#555',
+  iconContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 16,
+    paddingVertical: 0,
   },
-  listsArea: {
-    gap: 20,
-  },
-  progressWrapper: {
-    flexDirection: 'row', 
+  iconBox: {
+    width: 120, 
+    height: 100,
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center', 
-    gap: 20, 
-  }
+    padding: 8,
+    borderWidth: 3,
+    borderColor: Colors.lightBlue,
+    marginRight: 16,
+    borderRadius: 8,
+    marginBottom: 16,
+  },
+  iconImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
+  },
+  iconLabel: {
+    fontSize: 12,
+    marginTop: 8,
+    color: Colors.lightBlue,
+    fontWeight: 'bold',
+  },
 });
