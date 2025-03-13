@@ -6,7 +6,7 @@ import icons from "@/constants/icons";
 const Feirinha = () => {
   const [selectedFavorite, setSelectedFavorite] = useState([false, false, false, false]);
 
-  const toggleFavorite = (index) => {
+  const toggleFavorite = (index: number) => {
     const newFavorites = [...selectedFavorite];
     newFavorites[index] = !newFavorites[index];
     setSelectedFavorite(newFavorites);

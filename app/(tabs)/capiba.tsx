@@ -22,8 +22,8 @@ const CapibaScreen = () => {
         <Text style={styles.greeting}>Olá, Fred Oslon!</Text>
 
         <Link href="../ranking" style={[styles.capsuleButton, {justifyContent: 'center', paddingHorizontal:12, paddingVertical:6}]}> 
-          <Image style={{width: 18, height: 15}} source={icons.crown} />
-          <Text style ={{fontWeight: 'bold', fontSize: 14, color: colors.textOrange}}>
+          <Image style={{width: 18, height: 15, marginRight: 6}} source={icons.crown} />
+          <Text style ={{fontWeight: 'bold', fontSize: 14, color: '#F48609'}}>
              Ranking Capiba
           </Text>
         </Link>
@@ -77,10 +77,10 @@ const CapibaScreen = () => {
 
       <Text style={styles.sectionTitle}>Feirinha Capiba</Text>
 
-      <Link href="../feirinha">
+      <Link href="../feirinha" style = {styles.feiraCard}>
         <View style = {styles.feiraCard}>
-          <Image source={images.cupom} style={{ width: 80, height: 80 }} />
-          <View style={{ width: 175 }}>
+          <Image source={images.cupom} style={{ width: 80, height: 80, marginRight: 14 }} />
+          <View style={{ width: 175,  marginRight: 14  }}>
             <Text style={{ color: '#FFF', fontSize: 14, fontWeight: 'bold', marginBottom: 4 }}>Troque suas capibas por prêmios!</Text>
             <Text style={{ color: '#FFF', fontSize: 12 }}>Com os maiores parceiros em linha reta do mundo.</Text>
           </View>
