@@ -5,6 +5,7 @@ import icons from "@/constants/icons";
 import images from '@/constants/images';
 import Colors from '@/constants/Colors';
 import BackButton from '@/components/BackButton';
+import ShareModal from '@/components/ShareModal';
 
 const groupChallenge = () => {
   const [desafio1, setDesafio1] = useState(false);
@@ -134,37 +135,7 @@ const groupChallenge = () => {
           </View>
         </View>
       </Modal>
-        {/* MODAL DE COMPARTILHAMENTO DE DESAFIO */}
-        <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContainer}>
-            {/* Botão de Fechar */}
-            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
-              <Text style={styles.closeButtonText}>X</Text>
-            </TouchableOpacity>
 
-            <Text style={styles.modalTitle}>Criar novo desafio</Text>
-            
-            <TextInput style={styles.input} placeholder="Título..." placeholderTextColor="#AAA" />
-
-            <Text style={styles.modalSubtitle}>Selecione modelo do desafio</Text>
-            
-            {["Academia da cidade", "Reciclagem", "Pontos turísticos (Visitação)", "Bicicletas"].map((item, index) => (
-              <TouchableOpacity key={index} style={styles.option}>
-                <Text style={styles.optionText}>{item}</Text>
-              </TouchableOpacity>
-            ))}
-
-            <TouchableOpacity style={styles.imageButton}>
-              <Text style={styles.imageButtonText}>Adicionar imagem de capa</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.createButton}>
-              <Text style={styles.createButtonText}>Criar</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
     </ScrollView>
   );
 };
