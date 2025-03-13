@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import icons from '@/constants/icons';
+import images from '@/constants/images';
 import { Link, router } from 'expo-router';
 
 export default function Quiz() {
@@ -67,7 +67,7 @@ export default function Quiz() {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image source={icons.logoConecta} style={styles.logo} />
+        <Image source={images.logoConecta} style={styles.logo} />
       </View>
       <Text style={styles.question}>{question}</Text>
       <Text style={styles.question}>{secondQuestion}</Text>
@@ -102,7 +102,7 @@ export default function Quiz() {
         <Text style={styles.skipQuizText}>Pular quiz</Text>
       ) : null}
       </Link>
-      <Image source={icons.wave} style={styles.wave} />
+      <Image source={images.wave} style={styles.wave} />
     </View>
   );
 }

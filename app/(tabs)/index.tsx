@@ -59,8 +59,8 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
         <View style={styles.highlightContainer}>
         {Array.from({ length: 5 }).map((_, index) => (
-          <TouchableOpacity>
-            <View key={index} style={styles.highlightBox}>
+          <TouchableOpacity  key={index}>
+            <View style={styles.highlightBox}>
               <Text style={styles.textHighlight}>{Destaques[index]}</Text>
             </View>
           </TouchableOpacity>
