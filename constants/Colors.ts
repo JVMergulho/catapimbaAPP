@@ -15,4 +15,5 @@ export default {
   capiYellow: '#FFDB29',
   darkBlue: '#0F47AF',
   textGray: '#707C81',
+  pink: '#E835CA',
 };

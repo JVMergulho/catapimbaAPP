@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import icons from "@/constants/icons";
+import Colors from "@/constants/Colors";
 
 const challengeDetail = () => {
   const navigation = useNavigation();
@@ -23,49 +24,63 @@ const challengeDetail = () => {
       <Text style={styles.title}>Desafio</Text>
 
       {/* Card de Desafio */}
-      <View style={styles.card}>
-        <Text style={styles.desafioTitle}>⭐ EXAME DE MAMOGRAFIA</Text>
+      <View>
+        <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 28}}>
+          <View style={{flexDirection: "row"}}>
+            <Image source={icons.saude} style={{ width: 28, height: 28, alignSelf: "center", resizeMode: 'contain', marginRight: 8 }}/>
+            <Text style={styles.desafioTitle}>EXAME DE MAMOGRAFIA</Text>
+          </View>
 
-        <View style={styles.bonus}>
-          <Text style={styles.bonusText}>BÔNUS OUTUBRO ROSA</Text>
-          <Text style={styles.bonusCoins}>💰 60</Text>
+          <View style={styles.divider} />
+
+          <View style={{ alignItems: "flex-end" }}>
+            <View style={{flexDirection: "row", alignItems: "center", gap: 8}}>
+              <Image style={{width: 22, height: 22}} source={icons.capiCoin}/>
+              <Text style={{fontSize: 22, fontWeight: "bold", color: Colors.pink, marginRight: 8, marginBottom: 4}}>60</Text>
+            </View>
+            <View style={{backgroundColor: Colors.pink, borderRadius: 50, padding: 5}}> 
+              <Text style={{fontSize: 12, fontWeight: 'bold', color: "#fff"}}>BÔNUS OUTUBRO ROSA</Text>
+            </View>
+          </View>
         </View>
 
-        {/* Itens da Lista */}
-        <TouchableOpacity style={styles.task} onPress={() => setChecked1(!checked1)}>
-          <Text style={[styles.checkbox, checked1 && styles.checked]}>✔</Text>
-          <Text style={[styles.taskText, checked1 && styles.checkedText]}>
-            Marque exames através da plataforma
-          </Text>
-        </TouchableOpacity>
+        <View style={{ gap: 4 }}>
+          {/* Itens da Lista */}
+          <TouchableOpacity style={styles.task} onPress={() => setChecked1(!checked1)}>
+            <Text style={[styles.taskText, checked1 && styles.checkedText]}>
+              Marque exames através da plataforma
+            </Text>
+            <Image source={icons.check} style={{ width: 20, height: 20 }} />
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.task} onPress={() => setChecked2(!checked2)}>
-          <Text style={[styles.checkbox, checked2 && styles.checked]}>✔</Text>
-          <Text style={[styles.taskText, checked2 && styles.checkedText]}>
-            Vá até a UBS mais próxima e realize exames
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.task} onPress={() => setChecked2(!checked2)}>
+            <Text style={[styles.taskText, checked2 && styles.checkedText]}>
+              Vá até a UBS mais próxima e realize exames
+            </Text>
+            <Image source={icons.check} style={{ width: 20, height: 20 }} />
+          </TouchableOpacity>
 
-        <View style={styles.taskDisabled}>
-          <Text style={styles.checkboxDisabled}>⬜</Text>
-          <View>
-            <Text style={styles.taskText}>Retorno médico</Text>
-            <Text style={styles.status}>STATUS: Pendente de aprovação ℹ️</Text>
+          <View style={styles.taskDisabled}>
+            <View>
+              <Text style={styles.taskText}>Retorno médico</Text>
+              <Text style={styles.status}>STATUS: Pendente de aprovação ℹ️</Text>
+            </View>
+            <Text style={styles.checkboxDisabled}>⬜</Text>
           </View>
         </View>
       </View>
 
-      {/* Botão Concluído */}
-      <TouchableOpacity style={styles.concluirButton}>
-        <Text style={styles.concluirText}>CONCLUÍDO</Text>
-      </TouchableOpacity>
-
       {/* Card de Pesquisa */}
       <TouchableOpacity style={styles.pesquisaCard}>
-        <Text style={styles.pesquisaText}>GANHE +5 CAPIBAS</Text>
-        <Text style={styles.pesquisaSubtitle}>
-          Responda a pesquisa de satisfação a este serviço ➡
-        </Text>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 40 }}>
+          <Image source={icons.shinyCoin} style={{width: 37, height: 37}}/>
+          <View>
+            <Text style={styles.pesquisaText}>GANHE +5 CAPIBAS</Text>
+            <Text style={styles.pesquisaSubtitle}>
+              Responda a pesquisa de satisfação a este serviço
+            </Text>
+          </View>
+        </View>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -86,14 +101,19 @@ const styles = StyleSheet.create({
     height: 18, 
     marginRight: 5, 
     resizeMode: 'contain' },
-  title: { fontSize: 24, fontWeight: "bold", textAlign: "center", marginBottom: 10 },
+  title: { fontSize: 24, fontWeight: "bold", textAlign: "center", marginBottom: 28 },
   card: { backgroundColor: "#fff", padding: 15, borderRadius: 10, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 5, marginBottom: 20 },
-  desafioTitle: { fontSize: 16, fontWeight: "semibold", color: "#C62828", marginBottom: 10 },
+  desafioTitle: { 
+    fontSize: 16, 
+    fontWeight: "bold",
+    color: "#C62828",
+    width: 140
+  },
   bonus: { flexDirection: "row", justifyContent: "space-between", backgroundColor: "#D81B60", padding: 8, borderRadius: 5, marginBottom: 10 },
   bonusText: { color: "#fff", fontWeight: "bold" },
   bonusCoins: { color: "#fff", fontWeight: "bold" },
-  task: { flexDirection: "row", alignItems: "center", backgroundColor: "#E8F5E9", padding: 10, borderRadius: 5, marginBottom: 5 },
-  taskDisabled: { flexDirection: "row", alignItems: "center", backgroundColor: "#E0E0E0", padding: 10, borderRadius: 5, marginBottom: 5 },
+  task: { flexDirection: "row", alignItems: "center", backgroundColor: "#E8F5E9", padding: 10, borderRadius: 10, marginBottom: 5, height: 56},
+  taskDisabled: { height: 56, borderRadius: 10 ,flexDirection: "row", alignItems: "center", backgroundColor: "#E0E0E0", padding: 10, marginBottom: 5 },
   checkbox: { width: 24, height: 24, textAlign: "center", marginRight: 10, fontSize: 18, color: "#388E3C", borderWidth: 1, borderColor: "#388E3C", borderRadius: 5 },
   checkboxDisabled: { width: 24, height: 24, textAlign: "center", marginRight: 10, fontSize: 18, color: "#777" },
   checked: { backgroundColor: "#388E3C", color: "#fff" },
@@ -102,9 +122,20 @@ const styles = StyleSheet.create({
   status: { fontSize: 12, color: "#666" },
   concluirButton: { marginTop: 20, backgroundColor: "#1976D2", padding: 12, borderRadius: 5, alignItems: "center" },
   concluirText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
-  pesquisaCard: { backgroundColor: "#FF9800", padding: 15, borderRadius: 10, marginTop: 20, alignItems: "center" },
+  pesquisaCard: { 
+    backgroundColor: "#FF9800", 
+    padding: 15, 
+    borderRadius: 10, 
+    marginTop: 20, 
+    alignItems: "center",  
+    height: 90},
   pesquisaText: { fontWeight: "bold", fontSize: 16, color: "#fff" },
-  pesquisaSubtitle: { fontSize: 14, color: "#fff", marginTop: 5 },
+  pesquisaSubtitle: { fontSize: 12, color: "#fff", marginTop: 5, width: 200},
+  divider: {
+    width: 1, 
+    height: '60%',
+    backgroundColor: Colors.textRed,
+  },
 });
 
 export default challengeDetail;

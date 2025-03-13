@@ -25,5 +25,6 @@ export default {
     crown: require("@/assets/icons/crown.png"),
     back: require("@/assets/icons/backArrow.png"),
     backWhite: require("@/assets/icons/backButtonWhite.png")
+    check: require("@/assets/icons/check.png"),
   };
   
