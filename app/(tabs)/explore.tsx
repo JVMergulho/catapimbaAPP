@@ -23,10 +23,15 @@ export default function Perfil() {
         </View>
         <Image source={images.qrCode} style={styles.qrCode} />
       </View>
-      <Link href="/capiba">
-      <View style={styles.highlightBox}>
-      <Image source={icons.capiCoin} style={{ width: 24, height: 24, resizeMode: 'contain', }} />
-        <Text style={styles.highlightText}> Capi-cidadão nível Ouro!</Text>
+      <Link href="/capiba" style={styles.highlightBoxContainer}>
+      <View style={styles.highlightBoxContainer}>
+        <View style={styles.highlightBox}>
+          <Image source={icons.capiCoin} style={{ width: 30, height: 30, resizeMode: 'contain' }} />
+          <Text style={styles.highlightText}>
+            Capi-cidadão nível Ouro!  {"\n"}
+            <FontAwesome5 name="question-circle" size={14} color="fff" />
+          </Text>
+        </View>
         <Image source={images.capiOuro} style={styles.capivaraIcon} />
       </View>
       </Link>
@@ -53,12 +58,33 @@ const styles = StyleSheet.create({
   profileCpf: { color: '#666', fontSize: 16  },
   editButton: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
   editText: { color: Colors.lightBlue, fontSize: 14 },
-  highlightBox: { flexDirection: 'row', backgroundColor: Colors.lightBlue, margin:8,padding: 16, borderRadius: 10, alignItems: 'center', alignSelf: 'center', alignContent: 'center' , justifyContent: 'center' },
-  highlightText: { color: 'white', fontWeight: 'bold', flex: 1, marginLeft: 10, fontSize: 16 },
-  capivaraIcon: { width: 80, height: 80, resizeMode: 'contain', zIndex: 100 },
+  highlightText: { color: 'white', fontWeight: 'bold', flex: 1, marginLeft: 10, fontSize: 18, lineHeight: 22 },
+  highlightBoxContainer: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+  },
+  highlightBox: {
+    flexDirection: 'row',
+    backgroundColor: Colors.lightBlue,
+    padding: 16,
+    borderRadius: 10,
+    paddingBottom: 35, 
+    paddingTop: 45, 
+    marginHorizontal: 20,
+  },
+  capivaraIcon: {
+    width: 135,
+    height: 135,
+    resizeMode: 'contain',
+    position: 'absolute',
+    top: -10, 
+    right: -2, 
+    zIndex: 10, 
+  },
   sectionTitle: { fontSize: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 10 },
   dataGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 10, marginTop: 10 },
-  dataItem: { width: '45%', backgroundColor: '#f5f5f5', padding: 15, margin: 5, borderRadius: 10, flexDirection: 'row', alignItems: 'center' },
+  dataItem: { width: '45%', backgroundColor: '#f5f5f5', padding: 18, margin: 5, borderRadius: 10, flexDirection: 'row', alignItems: 'center' },
   dataText: { marginLeft: 10, color: '#1E5AC8', fontWeight: 'bold' },
   iconText: { fontSize: 18, fontWeight: 'bold', color: '#1E5AC8' },
   qrCode: { width: 52, height: 52, resizeMode: 'contain', marginBottom: 24 },
@@ -68,11 +94,11 @@ const styles = StyleSheet.create({
 const dataOptions = [
   { name: 'Agendamentos', icon: <FontAwesome5 name="calendar" size={20} color={Colors.lightBlue} /> },
   { name: 'Favoritos', icon: <FontAwesome5 name="star" size={20} color={Colors.lightBlue} /> },
-  { name: 'Empresas', icon: <FontAwesome5 name="cogs" size={20} color={Colors.lightBlue} /> },
-  { name: 'Imóveis', icon: <FontAwesome5 name="home" size={20} color={Colors.lightBlue} /> },
+  { name: 'Empresas', icon: <Ionicons name="receipt-outline" size={20} color={Colors.lightBlue} /> },
+  { name: 'Imóveis', icon: <Ionicons name="home-outline" size={20} color={Colors.lightBlue} /> },
   { name: 'Processos', icon: <FontAwesome5 name="file-alt" size={20} color={Colors.lightBlue} /> },
   { name: 'Receba Zap', icon: <FontAwesome5 name="whatsapp" size={20} color={Colors.lightBlue} /> },
-  { name: 'Saúde', icon: <FontAwesome5 name="plus-circle" size={20} color={Colors.lightBlue} /> },
-  { name: 'Solicitações', icon: <MaterialIcons name="request-page" size={20} color={Colors.lightBlue} /> },
-  { name: 'Meus dependentes', icon: <FontAwesome5 name="users" size={20} color={Colors.lightBlue} /> },
+  { name: 'Saúde', icon:  <Ionicons name="add-circle-outline" size={22} color={Colors.lightBlue}/>},
+  { name: 'Solicitações', icon: <Ionicons name="mail-open-outline" size={20} color={Colors.lightBlue} /> },
+  { name: 'Meus dependentes', icon: <Ionicons name="people-outline" size={20} color={Colors.lightBlue} />  },
 ];
