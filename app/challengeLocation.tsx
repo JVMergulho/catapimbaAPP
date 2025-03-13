@@ -45,8 +45,9 @@ const MapScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       {/* Botão Voltar */}
-      <BackButton isWhite={false} />
-
+      <View style={{ marginLeft: 20 }}>
+        <BackButton isWhite={false} />
+      </View>
       {/* Título */}
       <Text style={styles.title}>Próximo a Você</Text>
 

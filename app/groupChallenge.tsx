@@ -14,14 +14,14 @@ const groupChallenge = () => {
 
   return (
     <ScrollView style={styles.container}>
-      {/* Cabeçalho */}
+
       <View style={styles.header}>
         {/* Botão Voltar */}
         <BackButton isWhite={false} />
-        <TouchableOpacity style={styles.newChallengeButton} onPress={() => setModalVisible(true)}>
+        <TouchableOpacity style={[styles.newChallengeButton, { marginTop: 8 }]} onPress={() => setModalVisible(true)}>
           <Text style={styles.newChallengeText}>+ Novo desafio</Text>
         </TouchableOpacity>
-        </View>
+      </View>
       {/* Meus desafios */}
       <Text style={styles.sectionTitle}>Meus desafios</Text>
       {/* Desafio 1 */}
@@ -95,46 +95,93 @@ const groupChallenge = () => {
         </View>
       </View>
         {/* MODAL DE CRIAÇÃO DE DESAFIO */}
-      <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContainer}>
-            {/* Botão de Fechar */}
-            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
-              <Text style={styles.closeButtonText}>X</Text>
-            </TouchableOpacity>
+        <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
+  <View style={{
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }}>
+    <View style={{
+      width: '85%',
+      backgroundColor: '#FFF',
+      borderRadius: 12,
+      padding: 20,
+      alignItems: 'center'
+    }}>
+      {/* Botão de Fechar */}
+      <TouchableOpacity 
+        style={{
+          alignSelf: 'flex-end',
+          padding: 10
+        }} 
+        onPress={() => setModalVisible(false)}
+      >
+        <Text style={{ fontSize: 18, fontWeight: 'bold' }}>X</Text>
+      </TouchableOpacity>
 
-            <Text style={styles.modalTitle}>Criar novo desafio</Text>
-            
-            <TextInput style={styles.input} placeholder="Título..." placeholderTextColor="#AAA" />
+      <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>Criar novo desafio</Text>
+      
+      <TextInput 
+        style={{
+          width: '100%',
+          borderWidth: 1,
+          borderColor: '#CCC',
+          borderRadius: 8,
+          padding: 10,
+          marginBottom: 15,
+          fontSize: 16
+        }} 
+        placeholder="Título..." 
+        placeholderTextColor="#AAA" 
+      />
 
-            <Text style={styles.modalSubtitle}>Selecione modelo do desafio</Text>
-            
-            {["Academia da cidade", "Reciclagem", "Pontos turísticos (Visitação)", "Bicicletas"].map((item, index) => (
-                  <TouchableOpacity
-                    key={index}
-                    style={[
-                      styles.option,
-                      selectedOption === item ? { backgroundColor: '#4A90E2' } : {}
-                    ]}
-                  //  onPress={() => setSelectedOption(item)}
-                  >
-                    <Text style={[styles.optionText, selectedOption === item ? { color: 'white' } : {}]}>
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+      <Text style={{ fontSize: 16, fontWeight: '600', marginBottom: 10 }}>Selecione modelo do desafio</Text>
+      
+      {["Academia da cidade", "Reciclagem", "Pontos turísticos (Visitação)", "Bicicletas"].map((item, index) => (
+        <TouchableOpacity
+          key={index}
+          style={{
+            width: '100%',
+            padding: 12,
+            borderRadius: 8,
+            backgroundColor: selectedOption === item ? '#4A90E2' : '#F1F1F1',
+            marginBottom: 10,
+            alignItems: 'center'
+          }}
+          // onPress={() => setSelectedOption(item)}
+        >
+          <Text style={{ fontSize: 16, color: selectedOption === item ? 'white' : 'black' }}>
+            {item}
+          </Text>
+        </TouchableOpacity>
+      ))}
 
-            <TouchableOpacity style={styles.imageButton}>
-              <Text style={styles.imageButtonText}>Adicionar imagem de capa</Text>
-            </TouchableOpacity>
+      <TouchableOpacity style={{
+        width: '100%',
+        padding: 12,
+        borderRadius: 8,
+        backgroundColor: '#E1E1E1',
+        alignItems: 'center',
+        marginBottom: 10
+      }}>
+        <Text style={{ fontSize: 16 }}>Adicionar imagem de capa</Text>
+      </TouchableOpacity>
 
-            <TouchableOpacity style={styles.createButton}>
-              <Text style={styles.createButtonText}>Criar</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-        {/* MODAL DE COMPARTILHAMENTO DE DESAFIO */}
+      <TouchableOpacity style={{
+        width: '100%',
+        padding: 12,
+        borderRadius: 8,
+        backgroundColor: '#4A90E2',
+        alignItems: 'center'
+      }}>
+        <Text style={{ fontSize: 16, color: 'white', fontWeight: 'bold' }}>Criar</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</Modal>
+
+      {/* MODAL DE COMPARTILHAMENTO DE DESAFIO */}
         <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
@@ -176,7 +223,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   icon: {
     width: 16,

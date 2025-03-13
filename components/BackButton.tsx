@@ -10,7 +10,7 @@ const BackButton = ({isWhite}: {isWhite: boolean}) => {
   return (
       <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Image source={icons.back} style={styles.backIcon}/>
+          <Image source={isWhite ? icons.backWhite : icons.back} style={styles.backIcon}/>
           <Text style={[styles.backText, { color: isWhite ? '#fff' : colors.textBlue }]}>Voltar</Text>
         </View>
       </TouchableOpacity>

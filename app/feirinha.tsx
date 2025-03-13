@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import icons from "@/constants/icons";
+import BackButton from '@/components/BackButton';
 
 const Feirinha = () => {
   const [selectedFavorite, setSelectedFavorite] = useState([false, false, false, false]);
@@ -19,21 +20,13 @@ const Feirinha = () => {
       {/* Cabeçalho */}
       <View style={styles.header}>
         {/* Botão Voltar */}
-              <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <Image source={icons.backWhite} style={styles.backIcon}/>
-                  <Text style={styles.backText}>Voltar</Text>
-                </View>
-              </TouchableOpacity>
+
+        <BackButton isWhite={true} />
 
         <Text style={styles.headerTitle}>Feirinha</Text>
 
         <View style={styles.levels}>
-          <Text style={styles.levelText}>Capiba nível Bronze</Text>
-          <Text style={styles.levelText}>Capiba nível Prata</Text>
-          <View style={styles.selectedLevel}>
-            <Text style={styles.selectedLevelText}>Capiba nível Ouro</Text>
-          </View>
+          <Text style={styles.levelText}>Aproveite seus benefícios de Capiba nível Ouro!</Text>
         </View>
       </View>
 

@@ -12,6 +12,7 @@ import {
 import { useRouter } from "expo-router";
 import images from '@/constants/images';
 import Colors from '@/constants/Colors';
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -34,7 +35,6 @@ export default function LoginScreen() {
           <Text style={styles.label}>CPF</Text>
           <TextInput
             style={styles.input}
-            keyboardType="numeric"
             value={cpf}
             onChangeText={setCpf}
           />

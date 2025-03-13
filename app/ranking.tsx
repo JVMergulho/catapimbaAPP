@@ -47,7 +47,7 @@ export default function Ranking() {
   }];
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       {/* Header */}
       
       <View style={{marginLeft: 20}}>     
@@ -123,7 +123,7 @@ export default function Ranking() {
             <Text style={{ fontWeight: 'bold', alignSelf: 'center', fontSize: 18, color: '#fff' }}>...</Text>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
