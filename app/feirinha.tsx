@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+import icons from "@/constants/icons";
 
 const Feirinha = () => {
   const [selectedFavorite, setSelectedFavorite] = useState([false, false, false, false]);
@@ -10,13 +12,19 @@ const Feirinha = () => {
     setSelectedFavorite(newFavorites);
   };
 
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       {/* Cabeçalho */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
-          <Text style={styles.backButtonText}>← Voltar</Text>
-        </TouchableOpacity>
+        {/* Botão Voltar */}
+              <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Image source={icons.backWhite} style={styles.backIcon}/>
+                  <Text style={styles.backText}>Voltar</Text>
+                </View>
+              </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Feirinha</Text>
 
@@ -31,7 +39,7 @@ const Feirinha = () => {
 
       {/* Moedas */}
       <View style={styles.coinContainer}>
-        <Image source={require('../../assets/images/moeda.png')} style={styles.coinImage} />
+        <Image source={require('../assets/images/moeda.png')} style={styles.coinImage} />
         <Text style={styles.coinText}>320</Text>
       </View>
 
@@ -42,10 +50,10 @@ const Feirinha = () => {
         {/* Produtos */}
         <View style={styles.productsContainer}>
           {[
-            { name: "R$ 15,00 na 99", price: "300 capibas", stock: "600 unidades", image: require('../../assets/images/99.png') },
-            { name: "R$ 20,00 na VEM", price: "550 capibas", stock: "1245 unidades", image: require('../../assets/images/vem.png') },
-            { name: "R$ 15,00 na Assaí", price: "300 capibas", stock: "600 unidades", image: require('../../assets/images/assai.png') },
-            { name: "R$ 15,00 na Tembici", price: "300 capibas", stock: "600 unidades", image: require('../../assets/images/tembici.png') },
+            { name: "R$ 15,00 na 99", price: "300 capibas", stock: "600 unidades", image: require('../assets/images/99.png') },
+            { name: "R$ 20,00 na VEM", price: "550 capibas", stock: "1245 unidades", image: require('../assets/images/vem.png') },
+            { name: "R$ 15,00 na Assaí", price: "300 capibas", stock: "600 unidades", image: require('../assets/images/assai.png') },
+            { name: "R$ 15,00 na Tembici", price: "300 capibas", stock: "600 unidades", image: require('../assets/images/tembici.png') },
           ].map((item, index) => (
             <View key={index} style={styles.productCard}>
               <View style={styles.productImageContainer}>
@@ -57,7 +65,7 @@ const Feirinha = () => {
 
               <Text style={styles.productTitle}>{item.name}</Text>
               <View style={styles.productInfo}>
-                <Image source={require('../../assets/images/moeda.png')} style={styles.smallIcon} />
+                <Image source={require('../assets/images/moeda.png')} style={styles.smallIcon} />
                 <Text style={styles.priceText}>{item.price}</Text>
               </View>
               <View style={styles.stockContainer}>
@@ -82,10 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#1658C8',
     paddingVertical: 24,
     paddingHorizontal: 24
-  },
-  backButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   backButtonText: {
     color: 'white',
@@ -217,8 +221,23 @@ const styles = StyleSheet.create({
   arrowIcon: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#D69201',
+    color: 'white',
   },
+  backButton: { 
+    alignSelf: "flex-start", 
+    marginBottom: 10 },
+  backText: { 
+    color: "white", 
+    fontSize: 16, 
+    flexDirection: "row", 
+    alignItems: "center" },
+  backIcon: { 
+    width: 18, 
+    height: 18, 
+    marginRight: 5, 
+    resizeMode: 'contain',
+    color: 'white'
+   }
 });
 
 export default Feirinha;

@@ -15,12 +15,12 @@ const CapibaScreen = () => {
       <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'space-between'}}>
         <Text style={styles.greeting}>Olá, Fred Oslon!</Text>
 
-        <TouchableOpacity style={[styles.capsuleButton, {justifyContent: 'center'}]}> 
+        <Link href="../ranking" style={[styles.capsuleButton, {justifyContent: 'center'}]}> 
           <Image style={{width: 18, height: 15}} source={icons.crown} />
           <Text style ={{fontWeight: 'bold', fontSize: 14, color: colors.textOrange}}>
             Ranking Capiba
           </Text>
-        </TouchableOpacity>
+        </Link>
 
       </View>
 
@@ -71,14 +71,17 @@ const CapibaScreen = () => {
 
       <Text style={styles.sectionTitle}>Feirinha Capiba</Text>
 
-      <View style = {styles.feiraCard}>
-        <Image source={images.cupom} style={{ width: 80, height: 80 }} />
-        <View style={{ width: 175 }}>
-          <Text style={{ color: '#FFF', fontSize: 14, fontWeight: 'bold', marginBottom: 4 }}>Troque suas capibas por prêmios!</Text>
-          <Text style={{ color: '#FFF', fontSize: 12 }}>Com os maiores parceiros em linha reta do mundo.</Text>
+      <Link href="../feirinha">
+        <View style = {styles.feiraCard}>
+          <Image source={images.cupom} style={{ width: 80, height: 80 }} />
+          <View style={{ width: 175 }}>
+            <Text style={{ color: '#FFF', fontSize: 14, fontWeight: 'bold', marginBottom: 4 }}>Troque suas capibas por prêmios!</Text>
+            <Text style={{ color: '#FFF', fontSize: 12 }}>Com os maiores parceiros em linha reta do mundo.</Text>
+          </View>
+          <Image source={images.gift} style={{ width: 80, height: 80, resizeMode: 'contain' }} />
         </View>
-        <Image source={images.gift} style={{ width: 80, height: 80, resizeMode: 'contain' }} />
-      </View>
+      </Link>
+      
 
       <Text style={styles.sectionTitle}>Capi-amigos</Text>
 

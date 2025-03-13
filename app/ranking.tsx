@@ -1,26 +1,32 @@
 import React from 'react';
 import { Link } from 'expo-router';
 import { useState } from 'react';
-import { View, Text, Image, Button, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image, Button, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+import icons from "@/constants/icons";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function HomeScreen() {
+export default function Ranking() {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        <Button
-          title="< Voltar"
-          onPress={() => {}}
-          color="blue"
-        />
-      </View>
+      {/* Botão Voltar */}
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <View style={{ flexDirection: "row", alignItems: "center"}}>
+          <Image source={icons.back} style={styles.backIcon}/>
+          <Text style={styles.backText}>Voltar</Text>
+        </View>
+      </TouchableOpacity>
+      
 
       {/* Título Principal */}
       <Text style={styles.mainTitle}>Ranking Capiba Mensal</Text>
 
       {/* Imagem e Subtítulo */}
       <View style={styles.subHeader}>
-        <Image source={require('../../assets/images/elosCapiba.png')} style={styles.image} />
+        <Image source={require('../assets/images/elosCapiba.png')} style={styles.image} />
         <Text style={styles.subtitle}>Capi-cidadão exemplar</Text>
       </View>
 
@@ -52,7 +58,7 @@ export default function HomeScreen() {
           ))}
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -134,4 +140,17 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: 'white',
   },
+  backButton: { 
+    alignSelf: "flex-start", 
+    marginBottom: 10 },
+  backText: { 
+    color: "#1976D2", 
+    fontSize: 16, 
+    flexDirection: "row", 
+    alignItems: "center" },
+  backIcon: { 
+    width: 18, 
+    height: 18, 
+    marginRight: 5, 
+    resizeMode: 'contain' }
 });
