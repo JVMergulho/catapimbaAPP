@@ -13,7 +13,7 @@ export default function Perfil() {
       <View style={styles.profileContainer}>
         <Image source={images.profilePic} style={styles.profileImage} />
         <View style={styles.profileInfo}>
-          <Text style={styles.profileName}>Fred Oslon Matos</Text>
+          <Text style={styles.profileName}>Júlia Maya</Text>
           <Text style={styles.profileCpf}>123.456.789-10</Text>
           <TouchableOpacity style={styles.editButton}>
             <Ionicons name="pencil" size={14} color={Colors.lightBlue} />

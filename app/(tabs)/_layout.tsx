@@ -43,7 +43,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="quiz"
+        name="map"
         options={{
           title: 'Busca',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="magnifyingglass" color={color} />, // Ícone de lupa

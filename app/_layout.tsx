@@ -1,13 +1,10 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { Image } from 'react-native';
 import 'react-native-reanimated';
-import icons from '@/constants/icons';
-import Colors from '@/constants/Colors';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -22,7 +19,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      router.replace('/quiz');
     }
   }, [loaded]);
 

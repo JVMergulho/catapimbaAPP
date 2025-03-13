@@ -79,8 +79,8 @@ const CapibaScreen = () => {
 
       <Link href="../feirinha" style = {styles.feiraCard}>
         <View style = {styles.feiraCard}>
-          <Image source={images.cupom} style={{ width: 80, height: 80, marginRight: 14 }} />
-          <View style={{ width: 175,  marginRight: 14  }}>
+          <Image source={images.cupom} style={{ width: 80, height: 80, marginRight: 8 }} />
+          <View style={{ width: 175,  marginRight: 8  }}>
             <Text style={{ color: '#FFF', fontSize: 14, fontWeight: 'bold', marginBottom: 4 }}>Troque suas capibas por prêmios!</Text>
             <Text style={{ color: '#FFF', fontSize: 12 }}>Com os maiores parceiros em linha reta do mundo.</Text>
           </View>
@@ -94,7 +94,7 @@ const CapibaScreen = () => {
       <View style={styles.friendsCard}>
         <Text style={styles.title}>Convide amigos para participar de desafios.</Text>
         <View style={{ flexDirection: 'row', marginLeft: 28 }}>
-          <Text style={styles.subtitle}>Tudo fica mais legal com a galera.</Text>
+          <Text style={[styles.subtitle, { width: 100 }]}>Tudo fica mais legal com a galera!</Text>
           <Image source={images.capiFriends} style={styles.image} />
         </View>
       </View>
