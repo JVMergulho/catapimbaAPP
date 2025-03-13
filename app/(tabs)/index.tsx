@@ -20,6 +20,8 @@ const ICONS2 = [
   { id: 10, name: 'Geral', icon: icons.geral, link: 'https://www.google.com' },
 ];
 
+const Destaques = ['ADOTA PET','ACADEMIA RECIFE', 'GO RECIFE', 'EMBARQUE DIGITAL', 'SE MEXE COMIGO']
+
 export default function Home() {
   const handlePress = (url: string) => {
     Linking.openURL(url);
@@ -29,7 +31,7 @@ export default function Home() {
   const [points, setPoints] = useState(320);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerTop}>
           <TouchableOpacity onPress={() => setShowCapiba(!showCapiba)}>
@@ -56,9 +58,13 @@ export default function Home() {
       <Text style={styles.sectionTitle}>Meus Destaques</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
         <View style={styles.highlightContainer}>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <View key={index} style={styles.highlightBox} />
-          ))}
+        {Array.from({ length: 5 }).map((_, index) => (
+          <TouchableOpacity>
+            <View key={index} style={styles.highlightBox}>
+              <Text style={styles.textHighlight}>{Destaques[index]}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
         </View>
       </ScrollView>
       <Text style={styles.sectionTitle}>Públicos-Alvo</Text>
@@ -86,7 +92,7 @@ export default function Home() {
           ))}
         </View>
       </ScrollView>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -140,6 +146,13 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: 'contain',
   },
+  textHighlight:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+    padding: 8,
+    textAlign: 'center',
+  },
   coinAmount: {
     fontSize: 36,
     fontWeight: 'bold',
@@ -166,6 +179,8 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundColor: Colors.lightBlue,
     marginLeft: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 8,
   },
   iconContainer: {
