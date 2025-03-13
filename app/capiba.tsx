@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
     paddingHorizontal: 20,
-    paddingTop: 40,
   },
   progressImageContainer: {
     position: "relative", // Para posicionar a imagem sobre o círculo

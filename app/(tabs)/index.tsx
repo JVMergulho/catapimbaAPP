@@ -33,26 +33,33 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.headerTop}>
-          <TouchableOpacity onPress={() => setShowCapiba(!showCapiba)}>
-  {showCapiba ? (
-    <Image source={icons.eye} style={styles.eyeImage} />
-  ) : (
-    <Image source={icons.eyeSlash} style={styles.eyeImage} />
-  )}
-         </TouchableOpacity>
-        </View>
         <Text style={styles.greeting}>Bem-vinda,</Text>
         <Text style={styles.userName}>Julia Maya</Text>
         {showCapiba && (
-          <View style={styles.coinContainer}>
-            <Image source={icons.shinyCoin} style={styles.coinIcon} />
-            <Link href="/capiba">
-              <Text style={styles.coinAmount}>{points}</Text>
-            </Link>
-              <Image source={icons.backWhite} style={{ transform: [{ rotate: '180deg' }], marginLeft: 8 }}/>
+          <View style={{zIndex: 101, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+            <View style={styles.coinContainer}>
+              <Image source={icons.shinyCoin} style={styles.coinIcon} />
+              <Link href="/capiba">
+                <Text style={styles.coinAmount}>{points}</Text>
+              </Link>
+                <Image source={icons.backWhite} style={{ transform: [{ rotate: '180deg' }], marginLeft: 8 }}/>
+            </View>
+
+            <TouchableOpacity onPress={() => setShowCapiba(!showCapiba)}>
+            {showCapiba ? (
+              <Image source={icons.eye} style={styles.eyeImage} />
+            ) : (
+              <Image source={icons.eyeSlash} style={styles.eyeImage} />
+            )}
+         </TouchableOpacity>
           </View>
+
         )}
+
+{!showCapiba &&(          <TouchableOpacity onPress={() => setShowCapiba(!showCapiba)}>
+<Image source={icons.eyeSlash} style={[styles.eyeImage, { alignSelf: 'flex-end' }]} />
+         </TouchableOpacity>)}
+        
           <View style={styles.yellowLine}></View>
       </View>
       <Text style={styles.sectionTitle}>Meus Destaques</Text>

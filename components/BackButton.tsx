@@ -22,7 +22,8 @@ export default BackButton
 const styles = StyleSheet.create({
     backButton: { 
         alignSelf: "flex-start", 
-        marginBottom: 26 },
+        marginBottom: 26,
+        marginTop: 40},
     backText: { 
         fontSize: 16, 
         flexDirection: "row", 

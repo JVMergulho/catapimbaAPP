@@ -5,21 +5,54 @@ import { View, Text, Image, Button, ScrollView, StyleSheet, TouchableOpacity } f
 import { useNavigation } from "@react-navigation/native";
 import icons from "@/constants/icons";
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Colors from '@/constants/Colors';
+import BackButton from '@/components/BackButton';
 
 export default function Ranking() {
   const navigation = useNavigation();
 
+  const goldPeople = [{
+    name: 'Caroleta Costa',
+    capibas: 900
+  }, {
+    name: 'Pedro Monte',
+    capibas: 880
+  }, {
+    name: 'Mathew Cordevile',
+    capibas: 860
+  }];
+
+  const silverPeople = [{
+    name: 'Jorge Capy',
+    capibas: 290
+  }, {
+    name: 'Zé Barinha',
+    capibas: 260
+  },
+  {
+    name: 'João Mergulho',
+    capibas: 240
+  }];
+
+  const bronzePeople = [{
+    name: 'Cla Loura',
+    capibas: 180
+  }, {
+    name: 'Jeff Souza',
+    capibas: 180
+  },
+  {
+    name: 'Barbara Capy',
+    capibas: 160
+  }];
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      {/* Botão Voltar */}
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-        <View style={{ flexDirection: "row", alignItems: "center"}}>
-          <Image source={icons.back} style={styles.backIcon}/>
-          <Text style={styles.backText}>Voltar</Text>
-        </View>
-      </TouchableOpacity>
       
+      <View style={{marginLeft: 20}}>     
+        <BackButton isWhite={false} />
+      </View>
 
       {/* Título Principal */}
       <Text style={styles.mainTitle}>Ranking Capiba Mensal</Text>
@@ -27,35 +60,67 @@ export default function Ranking() {
       {/* Imagem e Subtítulo */}
       <View style={styles.subHeader}>
         <Image source={require('../assets/images/elosCapiba.png')} style={styles.image} />
-        <Text style={styles.subtitle}>Capi-cidadão exemplar</Text>
+        <Text style={styles.subtitle}>Seja um capi-cidadão exemplar</Text>
       </View>
 
       {/* ScrollView de Rankings */}
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <Text style={styles.sectionTitle}>Divisão Capiba de Ouro</Text>
+        <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', gap: 8 }}>
+          <Image source={icons.capiCoin} style={{ width: 26, height: 26 }}/>
+          <Text style={styles.sectionTitle}>Divisão Capiba de Ouro</Text>
+        </View>
 
         {/* Ranking de Capiba de Ouro */}
         <View style={styles.rankContainer}>
-          {['Jorge Capy', 'Zé Barinha', 'Luisa Gregorio'].map((name, index) => (
-            <View key={index} style={styles.rankRow}>
-              <Text style={styles.rankText}>{index + 1}o {name}</Text>
-              <Text style={styles.rankText}>{(29900 - index * 6400)} capibas</Text>
+            {goldPeople.map((person, index) => (
+              <View key={index} style={styles.rankRow}>
+                <Text style={styles.rankText}>{index + 1}º {person.name}</Text>
+                <Text style={styles.rankText}>{person.capibas} capibas</Text>
+              </View>
+            ))}
+            <View style={styles.rankRow}>
+              <Text style={[styles.rankText, { fontWeight: 'bold' }]}>10º Júlia Maya (Você)</Text>
+              <Text style={[styles.rankText, { fontWeight: 'bold' }]}> 320 capibas</Text>
             </View>
-          ))}
+            <Text style={{ fontWeight: 'bold', alignSelf: 'center', fontSize: 18, color: '#fff' }}>...</Text>
         </View>
 
         {/* Divider */}
         <View style={styles.divider} />
 
         {/* Divisão Capiba de Prata */}
-        <Text style={styles.sectionTitle}>Divisão Capiba de Prata</Text>
+        <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', gap: 8 }}>
+          <Image source={icons.capiCoinSilver} style={{ width: 26, height: 26 }}/>
+          <Text style={styles.sectionTitle}>Divisão Capiba de Prata</Text>
+        </View>
+
         <View style={styles.rankContainer}>
-          {['Jorge Capy', 'Zé Barinha', 'Luisa Gregorio'].map((name, index) => (
-            <View key={index + 3} style={styles.rankRow}>
-              <Text style={styles.rankText}>{index + 4}o {name}</Text>
-              <Text style={styles.rankText}>{(29900 - (index * 6400 + 3200))} capibas</Text>
-            </View>
-          ))}
+            {silverPeople.map((person, index) => (
+              <View key={index} style={styles.rankRow}>
+                <Text style={styles.rankText}>{index + 1}º {person.name}</Text>
+                <Text style={styles.rankText}>{person.capibas} capibas</Text>
+              </View>
+            ))}
+            <Text style={{ fontWeight: 'bold', alignSelf: 'center', fontSize: 18, color: '#fff' }}>...</Text>
+        </View>
+
+        {/* Divider */}
+        <View style={styles.divider} />
+
+        {/* Divisão Capiba de Bronze */}
+        <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', gap: 8 }}>
+          <Image source={icons.capiCoinBronze} style={{ width: 26, height: 26 }}/>
+          <Text style={styles.sectionTitle}>Divisão Capiba de Bronze</Text>
+        </View>
+
+        <View style={styles.rankContainer}>
+            {silverPeople.map((person, index) => (
+              <View key={index} style={styles.rankRow}>
+                <Text style={styles.rankText}>{index + 1}º {person.name}</Text>
+                <Text style={styles.rankText}>{person.capibas} capibas</Text>
+              </View>
+            ))}
+            <Text style={{ fontWeight: 'bold', alignSelf: 'center', fontSize: 18, color: '#fff' }}>...</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -77,9 +142,9 @@ const styles = StyleSheet.create({
   mainTitle: {
     fontSize: 24,
     fontWeight: '600',
-    color: 'blue',
+    color: Colors.textBlue,
     textAlign: 'center',
-    marginVertical: 20,
+    marginBottom: 20,
   },
   subHeader: {
     alignItems: 'center',
@@ -91,13 +156,13 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: 'blue',
+    color: Colors.textBlue,
   },
   scrollViewContent: {
     paddingTop: 24,
     paddingHorizontal: 24,
     paddingBottom: 24,
-    backgroundColor: '#1658C8',
+    backgroundColor: Colors.lightBlue,
     borderTopLeftRadius: 56,
     borderTopRightRadius: 56,
     overflow:'hidden'
@@ -124,11 +189,11 @@ const styles = StyleSheet.create({
   divider: {
     height: 2,
     backgroundColor: 'white',
-    marginVertical: 16,
+    marginBottom: 16,
   },
   footerBackground: {
     marginTop: 24,
-    backgroundColor: 'blue',
+    backgroundColor: Colors.textBlue,
     borderTopLeftRadius: 64,
     borderTopRightRadius: 64,
     paddingVertical: 20,

@@ -23,18 +23,16 @@ export default function Perfil() {
         </View>
         <Image source={images.qrCode} style={styles.qrCode} />
       </View>
-      <Link href="/capiba" style={styles.highlightBoxContainer}>
-      <View style={styles.highlightBoxContainer}>
         <View style={styles.highlightBox}>
           <Image source={icons.capiCoin} style={{ width: 30, height: 30, resizeMode: 'contain' }} />
-          <Text style={styles.highlightText}>
-            Capi-cidadão nível Ouro!  {"\n"}
-            <FontAwesome5 name="question-circle" size={14} color="fff" />
-          </Text>
+          <Link href="/capiba">
+            <Text style={styles.highlightText}>
+              Capi-cidadão nível Ouro!  {"\n"}
+              <FontAwesome5 name="question-circle" size={14} color="fff"/>
+            </Text>
+          </Link>
+          <Image source={images.capiOuro} style={styles.capivaraIcon} />
         </View>
-        <Image source={images.capiOuro} style={styles.capivaraIcon} />
-      </View>
-      </Link>
       <Text style={styles.sectionTitle}>Meus Dados</Text>
       <View style={styles.dataGrid}>
         {dataOptions.map((item, index) => (

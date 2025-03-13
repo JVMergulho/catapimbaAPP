@@ -25,5 +25,7 @@ export default {
     backWhite: require("@/assets/icons/backButtonWhite.png"),
     check: require("@/assets/icons/check.png"),
     arrowWhite: require("@/assets/icons/arrowWhite.png"),
+    capiCoinSilver: require("@/assets/icons/capiCoinSilver.png"),
+    capiCoinBronze: require("@/assets/icons/capiCoinBronze.png"),
   };
   
