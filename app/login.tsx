@@ -30,15 +30,14 @@ export default function LoginScreen() {
     <ImageBackground source={images.loginBg} style={styles.background}>
       <View style={styles.container}>
         <Image source={images.conectaLogin} style={styles.logo} />
-
         <View style={styles.inputContainer}>
           <Text style={styles.label}>CPF</Text>
           <TextInput
             style={styles.input}
+            keyboardType="numeric"
             value={cpf}
             onChangeText={setCpf}
           />
-
           <Text style={styles.label}>Senha</Text>
           <TextInput
             style={styles.input}
@@ -46,7 +45,6 @@ export default function LoginScreen() {
             value={senha}
             onChangeText={setSenha}
           />
-
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
