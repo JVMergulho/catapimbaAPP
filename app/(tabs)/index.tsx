@@ -47,10 +47,10 @@ export default function Home() {
         {showCapiba && (
           <View style={styles.coinContainer}>
             <Image source={icons.shinyCoin} style={styles.coinIcon} />
-            <Text style={styles.coinAmount}>{points}</Text>
             <Link href="/capiba">
-            <Text style={styles.arrow}> &gt; </Text>
-          </Link>
+              <Text style={styles.coinAmount}>{points}</Text>
+            </Link>
+              <Image source={icons.backWhite} style={{ transform: [{ rotate: '180deg' }], marginLeft: 8 }}/>
           </View>
         )}
           <View style={styles.yellowLine}></View>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   coinContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: -24,
+    marginBottom: -20,
     zIndex: 100,
   },
   coinIcon: {
@@ -158,11 +158,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginBottom: 8,
-  },
-  arrow: {
-    fontSize: 24,
-    fontWeight: '300',
-    color: 'white',
   },
   sectionTitle: {
     fontSize: 20,
