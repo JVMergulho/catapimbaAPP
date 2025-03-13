@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from "rea
 import { useNavigation } from "@react-navigation/native";
 import icons from "@/constants/icons";
 import Colors from "@/constants/Colors";
+import BackButton from "@/components/BackButton";
 
 const challengeDetail = () => {
   const navigation = useNavigation();
@@ -13,12 +14,7 @@ const challengeDetail = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Botão Voltar */}
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Image source={icons.back} style={styles.backIcon}/>
-          <Text style={styles.backText}>Voltar</Text>
-        </View>
-      </TouchableOpacity>
+      <BackButton isWhite={false} />
 
       {/* Título */}
       <Text style={styles.title}>Desafio</Text>
@@ -75,10 +71,13 @@ const challengeDetail = () => {
         <View style={{ flexDirection: "row", alignItems: "center", gap: 40 }}>
           <Image source={icons.shinyCoin} style={{width: 37, height: 37}}/>
           <View>
-            <Text style={styles.pesquisaText}>GANHE +5 CAPIBAS</Text>
-            <Text style={styles.pesquisaSubtitle}>
-              Responda a pesquisa de satisfação a este serviço
-            </Text>
+            <View>
+              <Text style={styles.pesquisaText}>GANHE +5 CAPIBAS</Text>
+              <Text style={styles.pesquisaSubtitle}>
+                Responda a pesquisa de satisfação a este serviço
+              </Text>
+            </View>
+            <Image style={{width: 16, height: 16, alignSelf: 'flex-end'}} source={icons.arrowWhite}/>
           </View>
         </View>
       </TouchableOpacity>
