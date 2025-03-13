@@ -24,5 +24,6 @@ export default {
     back: require("@/assets/icons/backArrow.png"),
     backWhite: require("@/assets/icons/backButtonWhite.png"),
     check: require("@/assets/icons/check.png"),
+    arrowWhite: require("@/assets/icons/arrowWhite.png"),
   };
   

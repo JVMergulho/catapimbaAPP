@@ -5,6 +5,7 @@ import Colors from '@/constants/Colors';
 import challengeData from '@/constants/ChallengeData';
 import icons from "@/constants/icons";
 import { useNavigation } from "@react-navigation/native";
+import BackButton from '@/components/BackButton';
 
 // Opções de filtros disponíveis
 const filterOptions = ['Todos', 'Para a turma', 'Ambiente', 'Saúde', 'Cidadania'];
@@ -21,12 +22,7 @@ const Challenges = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Image source={icons.back} style={styles.backIcon}/>
-          <Text style={styles.backText}>Voltar</Text>
-        </View>
-      </TouchableOpacity>
+      <BackButton isWhite={false} />
 
       <Text style={styles.title}>Desafios Pendentes</Text>
 
@@ -48,7 +44,7 @@ const Challenges = () => {
       {/* Lista de Desafios */}
       <FlatList 
         data={filteredChallenges}
-        renderItem={({ item }) => <ChallengeButton title={item.title} subtitle={item.subtitle} type={item.type} />}
+        renderItem={({ item }) => <ChallengeButton title={item.title} subtitle={item.subtitle} type={item.type} value={item.value}/>}
         keyExtractor={(item, index) => `${item.title}-${index}`}
         contentContainerStyle={{ paddingBottom: 20 }}
       />

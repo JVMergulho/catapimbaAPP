@@ -7,11 +7,16 @@ import colors from '@/constants/Colors';
 import * as Progress from 'react-native-progress';
 import { serviceType, ServiceType } from '@/constants/serviceType';
 import { Link } from 'expo-router';
+import challengeData from '@/constants/ChallengeData';
+import BackButton from '@/components/BackButton';
 
 const CapibaScreen = () => {
   return (
     <ScrollView style={styles.container}>
-    <View style={styles.header}/>
+
+      {/* Botão Voltar */}
+      <BackButton isWhite={false} />
+
       {/* Cabeçalho */}
       <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'space-between'}}>
         <Text style={styles.greeting}>Olá, Fred Oslon!</Text>
@@ -35,12 +40,12 @@ const CapibaScreen = () => {
           </View>
 
           <TouchableOpacity style={styles.button}>
-              <Text style={{ color: '#fff' }}>Ver extrato →</Text>
+              <Text style={{ color: '#fff', fontSize: 12 }}>Ver extrato →</Text>
           </TouchableOpacity>
 
         </View>
 
-        <Image source={images.capiClipped} style={styles.capivaraImage} />
+        <Image source={images.capiCupom} style={styles.capivaraImage} />
       </View>
 
       {/* Metas Mensais */}
@@ -66,8 +71,8 @@ const CapibaScreen = () => {
       </View>
 
       <View style={styles.challengeList}>
-        <ChallengeButton title="ANDAR DE BIKE" subtitle="Pedale para um futuro mais limpo!" type="ambiente" />
-        <ChallengeButton title="EXAME DE ROTINA" subtitle="Prevenção é o melhor cuidado!" type="saúde" />
+        <ChallengeButton title={challengeData[0].title} subtitle={challengeData[0].subtitle} value={challengeData[0].value} type={challengeData[0].type} />
+        <ChallengeButton title={challengeData[1].title} subtitle={challengeData[1].subtitle} value={challengeData[1].value} type={challengeData[1].type} />
       </View>
 
       <Text style={styles.sectionTitle}>Feirinha Capiba</Text>
@@ -86,10 +91,12 @@ const CapibaScreen = () => {
 
       <Text style={styles.sectionTitle}>Capi-amigos</Text>
 
-      <View style={{ alignItems: 'center'}}>
-        <Text style={[styles.description, {marginBottom: 60}]}>
-          Você ainda não adicionou ninguém ao seu círculo
-        </Text>
+      <View style={styles.friendsCard}>
+        <Text style={styles.title}>Convide amigos para participar de desafios.</Text>
+        <View style={{ flexDirection: 'row', marginLeft: 28 }}>
+          <Text style={styles.subtitle}>Tudo fica mais legal com a galera.</Text>
+          <Image source={images.capiFriends} style={styles.image} />
+        </View>
       </View>
 
     </ScrollView>
@@ -160,6 +167,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 124,
     alignItems: 'center',
+    gap: 10,
     marginTop: 10,
   },
   balanceText: {
@@ -173,8 +181,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#1658C8',
     paddingVertical: 5,
     paddingHorizontal: 15,
-    borderRadius: 5,
+    borderRadius: 10,
     width: 120,
+    height: 28,
+    justifyContent: 'center',
   },
   capivaraImage: {
     width: 170,
@@ -250,5 +260,44 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     backgroundColor: colors.darkBlue, 
     borderRadius: 10,
-  }
+  },
+  friendsCard: {
+    backgroundColor: '#69B345', // Cor de fundo igual à imagem
+    borderRadius: 12, // Arredondamento das bordas
+    paddingLeft: 16,
+    height: 125, 
+    alignItems: 'center',
+    justifyContent: 'space-between', // Mantém os elementos alinhados corretamente
+    marginBottom: 30, 
+  },
+  title: {
+    color: '#FFF',
+    fontSize: 14, // Aumentado para melhor leitura
+    fontWeight: 'bold',
+    marginTop: 16,
+
+  },
+  subtitle: {
+    color: '#FFF',
+    fontSize: 12,
+  },
+  image: {
+    width: 220, // Ajustado para um melhor encaixe
+    height: 70,
+    resizeMode: 'contain',
+    alignSelf: 'flex-end', // Alinhado à direita
+  },
+  backButton: { 
+    alignSelf: "flex-start", 
+    marginBottom: 10 },
+  backText: { 
+    color: "#1976D2", 
+    fontSize: 16, 
+    flexDirection: "row", 
+    alignItems: "center" },
+  backIcon: { 
+    width: 18, 
+    height: 18, 
+    marginRight: 5, 
+    resizeMode: 'contain' },
 });
