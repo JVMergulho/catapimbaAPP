@@ -20,7 +20,7 @@ const CapibaScreen = () => {
 
       {/* Cabeçalho */}
       <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'space-between'}}>
-        <Text style={styles.greeting}>Olá, Fred Oslon!</Text>
+        <Text style={styles.greeting}>Olá, Júlia Maya!</Text>
 
         <Link href="../ranking" style={[styles.capsuleButton, {justifyContent: 'center', paddingHorizontal:12, paddingVertical:6}]}> 
           <Image style={{width: 18, height: 15, marginRight: 6}} source={icons.crown} />
@@ -92,6 +92,7 @@ const CapibaScreen = () => {
 
       <Text style={styles.sectionTitle}>Capi-amigos</Text>
 
+      <Link href="../groupChallenge" style = {styles.friendsCard}>
       <View style={styles.friendsCard}>
         <Text style={styles.title}>Convide amigos para participar de desafios.</Text>
         <View style={{ flexDirection: 'row', marginLeft: 28 }}>
@@ -99,6 +100,8 @@ const CapibaScreen = () => {
           <Image source={images.capiFriends} style={styles.image} />
         </View>
       </View>
+      </Link>
+
 
     </ScrollView>
   );

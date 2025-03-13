@@ -43,15 +43,15 @@ export default function Home() {
          </TouchableOpacity>
         </View>
         <Text style={styles.greeting}>Bem-vinda,</Text>
-        <Text style={styles.userName}>Julia Maya</Text>
+        <Text style={styles.userName}>Júlia Maya</Text>
         {showCapiba && (
           <View style={styles.coinContainer}>
             <Image source={icons.shinyCoin} style={styles.coinIcon} />
-            <Link href="/capiba">
+            <Link href="/capiba" style={{ alignItems: "center", justifyContent: "center", display: "flex" }}>
               <Text style={styles.coinAmount}>{points}</Text>
-            </Link>
               <Image source={icons.backWhite} style={{ transform: [{ rotate: '180deg' }], marginLeft: 8 }}/>
-          </View>
+              </Link>
+         </View>
         )}
           <View style={styles.yellowLine}></View>
       </View>
@@ -71,7 +71,7 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }} >
         <View style={styles.iconContainer}>
           {ICONS1.map((icon) => (
-            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+            <TouchableOpacity key={icon.id}>
               <View style={styles.iconBox}>
                 <Image source={icon.icon} style={styles.iconImage} />
                 <Text style={styles.iconLabel}>{icon.name}</Text>
@@ -83,7 +83,8 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
         <View style={styles.iconContainer}>
           {ICONS2.map((icon) => (
-            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+            <TouchableOpacity key={icon.id} >
+              {/* onPress={() => handlePress(icon.link)} */}
               <View style={styles.iconBox}>
                 <Image source={icon.icon} style={styles.iconImage} />
                 <Text style={styles.iconLabel}>{icon.name}</Text>

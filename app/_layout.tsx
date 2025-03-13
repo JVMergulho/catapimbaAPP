@@ -19,7 +19,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      router.replace('/quiz');
+      router.replace('/login');
     }
   }, [loaded]);
 
