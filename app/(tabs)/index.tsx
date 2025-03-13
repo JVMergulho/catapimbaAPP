@@ -42,16 +42,16 @@ export default function Home() {
   )}
          </TouchableOpacity>
         </View>
-        <Text style={styles.greeting}>Bem-vindo,</Text>
-        <Text style={styles.userName}>Fred Oslon</Text>
+        <Text style={styles.greeting}>Bem-vinda,</Text>
+        <Text style={styles.userName}>Júlia Maya</Text>
         {showCapiba && (
           <View style={styles.coinContainer}>
             <Image source={icons.shinyCoin} style={styles.coinIcon} />
-            <Link href="/capiba">
+            <Link href="/capiba" style={{ alignItems: "center", justifyContent: "center", display: "flex" }}>
               <Text style={styles.coinAmount}>{points}</Text>
-            </Link>
               <Image source={icons.backWhite} style={{ transform: [{ rotate: '180deg' }], marginLeft: 8 }}/>
-          </View>
+              </Link>
+         </View>
         )}
           <View style={styles.yellowLine}></View>
       </View>

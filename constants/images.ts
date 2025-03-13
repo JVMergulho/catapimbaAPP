@@ -12,5 +12,16 @@ export default {
     capiCupom: require("@/assets/images/capiCupom.png"),
     loginBg: require("@/assets/images/loginBg.png"),
     conectaLogin: require("@/assets/images/conectaLogin.png"),
+    pessoa1: require("@/assets/images/pessoa1.png"),
+    pessoa2: require("@/assets/images/pessoa2.png"),
+    pessoa3: require("@/assets/images/pessoa3.png"),
+    pessoa4: require("@/assets/images/pessoa4.png"),
+    pessoa5: require("@/assets/images/pessoa5.png"),
+    pessoas1: require("@/assets/images/pessoas1.png"),
+    pessoas2: require("@/assets/images/pessoas2.png"),  
+    pessoas3: require("@/assets/images/pessoas3.png"),
+    desafiofoto1: require("@/assets/images/desafiofoto1.png"),
+    desafiofoto2: require("@/assets/images/desafiofoto2.png"),
+    desafiofoto3: require("@/assets/images/desafiofoto3.png"),
   };
   
