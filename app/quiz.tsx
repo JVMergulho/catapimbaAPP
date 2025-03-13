@@ -23,7 +23,7 @@ export default function Quiz() {
 
   const handleRedirect = () => {
     if (button === 'Finalizar') {
-      router.push('/capiba'); // Redireciona para a tela "capiba"
+      router.push("/(tabs)"); // Redireciona para a tela "capiba"
     }
   };
   
@@ -97,7 +97,7 @@ export default function Quiz() {
       <TouchableOpacity style={styles.continueButton} onPress={() => { handleContinue(); handleRedirect(); }}>
         <Text style={styles.continueText}>{button}</Text>
       </TouchableOpacity>
-      <Link href="/capiba">
+      <Link href="/(tabs)">
       {button !== 'Finalizar' ? (
         <Text style={styles.skipQuizText}>Pular quiz</Text>
       ) : null}

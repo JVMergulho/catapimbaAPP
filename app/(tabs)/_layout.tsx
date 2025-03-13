@@ -29,7 +29,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="capiba"
+        name="map"
         options={{
           title: 'Mapa',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="map.fill" color={color} />, // Ícone de mapa
@@ -43,7 +43,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="map"
+        name="search"
         options={{
           title: 'Busca',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="magnifyingglass" color={color} />, // Ícone de lupa
