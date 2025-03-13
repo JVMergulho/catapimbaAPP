@@ -8,7 +8,7 @@ A nossa equipe propõe integrar a moeda capiba de forma mais atrativa ao conecta
 Desenvolvido por Ana Carolyne Costa, João Vítor Mergulhão, Maria Clara Moura, Júlia Mayara e Pedro Vítor Monte.
 
 
-Esse app foi criado com [Expo](https://expo.dev) [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Esse app foi criado com [Expo](https://expo.dev)
 
 ## Como rodar
 
