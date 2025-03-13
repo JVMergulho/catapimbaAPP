@@ -10,5 +10,7 @@ export default {
     gift: require("@/assets/images/gift.png"),
     capiFriends: require("@/assets/images/capiFriends.png"),
     capiCupom: require("@/assets/images/capiCupom.png"),
+    loginBg: require("@/assets/images/loginBg.png"),
+    conectaLogin: require("@/assets/images/conectaLogin.png"),
   };
   
