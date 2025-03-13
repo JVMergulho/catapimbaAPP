@@ -42,8 +42,8 @@ export default function Home() {
   )}
          </TouchableOpacity>
         </View>
-        <Text style={styles.greeting}>Bem-vinda,</Text>
-        <Text style={styles.userName}>Julia Maya</Text>
+        <Text style={styles.greeting}>Bem-vindo,</Text>
+        <Text style={styles.userName}>Fred Oslon</Text>
         {showCapiba && (
           <View style={styles.coinContainer}>
             <Image source={icons.shinyCoin} style={styles.coinIcon} />
@@ -71,7 +71,7 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }} >
         <View style={styles.iconContainer}>
           {ICONS1.map((icon) => (
-            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+            <TouchableOpacity key={icon.id}>
               <View style={styles.iconBox}>
                 <Image source={icon.icon} style={styles.iconImage} />
                 <Text style={styles.iconLabel}>{icon.name}</Text>
@@ -83,7 +83,8 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}  contentContainerStyle={{ flexGrow: 1 }} >
         <View style={styles.iconContainer}>
           {ICONS2.map((icon) => (
-            <TouchableOpacity key={icon.id} onPress={() => handlePress(icon.link)}>
+            <TouchableOpacity key={icon.id} >
+              {/* onPress={() => handlePress(icon.link)} */}
               <View style={styles.iconBox}>
                 <Image source={icon.icon} style={styles.iconImage} />
                 <Text style={styles.iconLabel}>{icon.name}</Text>
