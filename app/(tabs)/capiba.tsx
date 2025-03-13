@@ -11,14 +11,15 @@ import { Link } from 'expo-router';
 const CapibaScreen = () => {
   return (
     <ScrollView style={styles.container}>
+    <View style={styles.header}/>
       {/* Cabeçalho */}
       <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'space-between'}}>
         <Text style={styles.greeting}>Olá, Fred Oslon!</Text>
 
-        <Link href="../ranking" style={[styles.capsuleButton, {justifyContent: 'center'}]}> 
+        <Link href="../ranking" style={[styles.capsuleButton, {justifyContent: 'center', paddingHorizontal:12, paddingVertical:6}]}> 
           <Image style={{width: 18, height: 15}} source={icons.crown} />
           <Text style ={{fontWeight: 'bold', fontSize: 14, color: colors.textOrange}}>
-            Ranking Capiba
+             Ranking Capiba
           </Text>
         </Link>
 
@@ -139,6 +140,13 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
+    backgroundColor: colors.lightBlue,
+    padding: 40,
+    width: '150%',
+    marginTop: -40,
+    marginLeft: -40,
+    marginBottom: 20,
+    
   },
   greeting: {
     fontSize: 22,
