@@ -8,5 +8,6 @@ export default {
     arrowGreen: require("@/assets/icons/arrowGreen.png"),
     arrowOrange: require("@/assets/icons/arrowOrange.png"),
     crown: require("@/assets/icons/crown.png"),
+    back: require("@/assets/icons/backArrow.png"),
   };
   

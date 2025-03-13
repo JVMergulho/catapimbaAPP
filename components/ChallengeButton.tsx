@@ -3,12 +3,14 @@ import icons from '@/constants/icons';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { serviceType, ServiceType } from '@/constants/serviceType';
+import { Link, useNavigation } from 'expo-router';
 
 export function ChallengeButton({ title, subtitle, type }: { title: string; subtitle: string; type: ServiceType }): JSX.Element {
   const service = serviceType[type as keyof typeof serviceType] ?? { color: "#000", icon: icons.ambiente, arrow: icons.arrowGreen }; // Fallback para segurança
+  const navigation = useNavigation();
 
   return(
-  <TouchableOpacity style={[styles.challengeButton, { backgroundColor: "#F9F8F5" }]}>
+  <Link href='/challengeDetail' style={[styles.challengeButton, { backgroundColor: "#F9F8F5" }]}>
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
     <View style={{ flexDirection: 'row', gap: 20, alignItems: 'center' }}>
       <Image source={service.icon} style={{width: 38, height: 38, resizeMode: 'contain'}}/>
@@ -22,7 +24,7 @@ export function ChallengeButton({ title, subtitle, type }: { title: string; subt
     <Image source={service.arrow} style={{width: 14, height: 14}}/>
     </View>
 
-  </TouchableOpacity>
+  </Link>
   )
 }
 

@@ -8,7 +8,7 @@ export const serviceType = {
       icon: icons.solPessoa,
       arrow: icons.arrowOrange,
     },
-    saude: {
+    saúde: {
       color: colors.textRed,
       icon: icons.saude,
       arrow: icons.arrowRed,

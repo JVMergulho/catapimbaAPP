@@ -6,6 +6,7 @@ import images from '@/constants/images';
 import colors from '@/constants/Colors';
 import * as Progress from 'react-native-progress';
 import { serviceType, ServiceType } from '@/constants/serviceType';
+import { Link } from 'expo-router';
 
 const CapibaScreen = () => {
   return (
@@ -47,7 +48,7 @@ const CapibaScreen = () => {
 
       <CircularProgressWithImage progress={0.6} type='ambiente' />
 
-      <CircularProgressWithImage progress={0.8} type='saude' />
+      <CircularProgressWithImage progress={0.8} type='saúde' />
 
       <CircularProgressWithImage progress={0.2} type='cidadania' />
 
@@ -55,13 +56,17 @@ const CapibaScreen = () => {
 
       {/* Desafios Pendentes */}
       <View style={ styles.challengeTitleContainer}>
-        <Text style={{fontSize: 16, color: colors.textBlue}}>Desafios pendentes</Text>
-        <Text style={{ color: colors.textBlue, textDecorationLine: "underline" }}>Ver todos desafios</Text>
+        <Text style={{fontSize: 16, color: colors.textBlue, fontWeight: 'semibold'}}>Desafios pendentes</Text>
+        <Link href="/challenges">
+          <Text style={{ color: colors.textBlue, textDecorationLine: "underline" }}> 
+            Ver todos os desafios
+          </Text>
+        </Link>
       </View>
 
       <View style={styles.challengeList}>
         <ChallengeButton title="ANDAR DE BIKE" subtitle="Pedale para um futuro mais limpo!" type="ambiente" />
-        <ChallengeButton title="EXAME DE ROTINA" subtitle="Prevenção é o melhor cuidado!" type="saude" />
+        <ChallengeButton title="EXAME DE ROTINA" subtitle="Prevenção é o melhor cuidado!" type="saúde" />
       </View>
 
       <Text style={styles.sectionTitle}>Feirinha Capiba</Text>
