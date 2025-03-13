@@ -29,14 +29,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="capiba"
         options={{
           title: 'Mapa',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="map.fill" color={color} />, // Ícone de mapa
         }}
       />
       <Tabs.Screen
-        name="capiba"
+        name="explore"
         options={{
           title: 'Perfil',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.fill" color={color} />, // Ícone de perfil
