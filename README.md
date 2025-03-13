@@ -1,50 +1,26 @@
-# Welcome to your Expo app 👋
+# Hacker Cidadão - Equipe Catapimba 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App desenvolvido para o Desafio da Moeda Capiba.
 
-## Get started
+A nossa equipe propõe integrar a moeda capiba de forma mais atrativa ao conecta Recife, além de transformar a experiência no app como todo altamente personalizada identificando padrões do comportamento do usuário,  competitiva por meio de desafios de grupo, dinâmica e atrativa pelo seu design inovador. Com solução em construção de app e dispositivos iOT, buscamos transformar positivamente a forma que o recifense enxerga cidadania e a própria cidade.
 
-1. Install dependencies
+
+Desenvolvido por Ana Carolyne Costa, João Vítor Mergulhão, Maria Clara Moura, Júlia Mayara e Pedro Vítor Monte.
+
+
+Esse app foi criado com [Expo](https://expo.dev) [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+
+## Como rodar
+
+1. Instalar dependências
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Inicialize o app
 
    ```bash
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
