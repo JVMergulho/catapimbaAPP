@@ -22,5 +22,7 @@ export default {
     shinyCoin: require("@/assets/icons/shinyCoin.png"),
     logoConecta: require("@/assets/images/logoConecta.png"),
     wave: require("@/assets/images/wave.png"),
+    crown: require("@/assets/icons/crown.png"),
+    back: require("@/assets/icons/backArrow.png"),
   };
   
