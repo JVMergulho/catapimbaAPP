@@ -1,109 +1,102 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import images from '@/constants/images';
+import icons from '@/constants/icons';
+import Colors from '@/constants/Colors';
+import { Link } from 'expo-router';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-
-export default function TabTwoScreen() {
+export default function Perfil() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <ScrollView style={styles.container}>
+      <View style={styles.header}/>
+      <View style={styles.profileContainer}>
+        <Image source={images.profilePic} style={styles.profileImage} />
+        <View style={styles.profileInfo}>
+          <Text style={styles.profileName}>Júlia Maya</Text>
+          <Text style={styles.profileCpf}>123.456.789-10</Text>
+          <TouchableOpacity style={styles.editButton}>
+            <Ionicons name="pencil" size={14} color={Colors.lightBlue} />
+            <Text style={styles.editText}> Editar informações</Text>
+          </TouchableOpacity>
+          <View style={styles.line}></View>
+        </View>
+        <Image source={images.qrCode} style={styles.qrCode} />
+      </View>
+        <View style={styles.highlightBox}>
+          <Image source={icons.capiCoin} style={{ width: 30, height: 30, resizeMode: 'contain' }} />
+          <Link href="/capiba">
+            <Text style={styles.highlightText}>
+              Capi-cidadão nível Ouro!  {"\n"}
+              <FontAwesome5 name="question-circle" size={14} color="fff"/>
+            </Text>
+          </Link>
+          <Image source={images.capiOuro} style={styles.capivaraIcon} />
+        </View>
+      <Text style={styles.sectionTitle}>Meus Dados</Text>
+      <View style={styles.dataGrid}>
+        {dataOptions.map((item, index) => (
+          <TouchableOpacity key={index} style={styles.dataItem}>
+            {item.icon}
+            <Text style={styles.dataText}>{item.name}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: { flex: 1, backgroundColor: '#fff' },
+  header: { backgroundColor: Colors.lightBlue, padding: 40 },
+  profileContainer: { flexDirection: 'row', alignItems: 'center', padding: 20, marginRight: 8 },
+  profileImage: { width: 100, height: 100, borderRadius:50, borderWidth: 3, borderColor: Colors.capiYellow, },
+  profileInfo: { flex: 1, marginLeft: 10 },
+  profileName: { fontSize: 20, fontWeight: 'bold' },
+  profileCpf: { color: '#666', fontSize: 16  },
+  editButton: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
+  editText: { color: Colors.lightBlue, fontSize: 14 },
+  highlightText: { color: 'white', fontWeight: 'bold', flex: 1, marginLeft: 10, fontSize: 18, lineHeight: 22 },
+  highlightBoxContainer: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   },
-  titleContainer: {
+  highlightBox: {
     flexDirection: 'row',
-    gap: 8,
+    backgroundColor: Colors.lightBlue,
+    padding: 16,
+    borderRadius: 10,
+    paddingBottom: 35, 
+    paddingTop: 45, 
+    marginHorizontal: 20,
   },
+  capivaraIcon: {
+    width: 135,
+    height: 135,
+    resizeMode: 'contain',
+    position: 'absolute',
+    top: -10, 
+    right: -2, 
+    zIndex: 10, 
+  },
+  sectionTitle: { fontSize: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 10 },
+  dataGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 10, marginTop: 10 },
+  dataItem: { width: '45%', backgroundColor: '#f5f5f5', padding: 18, margin: 5, borderRadius: 10, flexDirection: 'row', alignItems: 'center' },
+  dataText: { marginLeft: 10, color: '#1E5AC8', fontWeight: 'bold' },
+  iconText: { fontSize: 18, fontWeight: 'bold', color: '#1E5AC8' },
+  qrCode: { width: 52, height: 52, resizeMode: 'contain', marginBottom: 24 },
+  line: { height: 1, backgroundColor: "gray", width: '125%', alignSelf: 'flex-start', margin:8  },
 });
+
+const dataOptions = [
+  { name: 'Agendamentos', icon: <FontAwesome5 name="calendar" size={20} color={Colors.lightBlue} /> },
+  { name: 'Favoritos', icon: <FontAwesome5 name="star" size={20} color={Colors.lightBlue} /> },
+  { name: 'Empresas', icon: <Ionicons name="receipt-outline" size={20} color={Colors.lightBlue} /> },
+  { name: 'Imóveis', icon: <Ionicons name="home-outline" size={20} color={Colors.lightBlue} /> },
+  { name: 'Processos', icon: <FontAwesome5 name="file-alt" size={20} color={Colors.lightBlue} /> },
+  { name: 'Receba Zap', icon: <FontAwesome5 name="whatsapp" size={20} color={Colors.lightBlue} /> },
+  { name: 'Saúde', icon:  <Ionicons name="add-circle-outline" size={22} color={Colors.lightBlue}/>},
+  { name: 'Solicitações', icon: <Ionicons name="mail-open-outline" size={20} color={Colors.lightBlue} /> },
+  { name: 'Meus dependentes', icon: <Ionicons name="people-outline" size={20} color={Colors.lightBlue} />  },
+];
