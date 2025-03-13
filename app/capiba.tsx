@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import {ChallengeButton} from '@/components/ChallengeButton';
+import {ChallengeButtonLocation} from '@/components/ChallengeButton';
 import icons from '@/constants/icons';
 import images from '@/constants/images';
 import colors from '@/constants/Colors';
@@ -71,7 +72,7 @@ const CapibaScreen = () => {
       </View>
 
       <View style={styles.challengeList}>
-        <ChallengeButton title={challengeData[0].title} subtitle={challengeData[0].subtitle} value={challengeData[0].value} type={challengeData[0].type} />
+        <ChallengeButtonLocation title={challengeData[0].title} subtitle={challengeData[0].subtitle} value={challengeData[0].value} type={challengeData[0].type} />
         <ChallengeButton title={challengeData[1].title} subtitle={challengeData[1].subtitle} value={challengeData[1].value} type={challengeData[1].type} />
       </View>
 
