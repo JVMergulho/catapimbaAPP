@@ -20,5 +20,9 @@ export default {
     eye: require("@/assets/icons/eye.png"),
     eyeSlash: require("@/assets/icons/eyeSlash.png"),
     shinyCoin: require("@/assets/icons/shinyCoin.png"),
+    crown: require("@/assets/icons/crown.png"),
+    back: require("@/assets/icons/backArrow.png"),
+    backWhite: require("@/assets/icons/backButtonWhite.png"),
+    check: require("@/assets/icons/check.png"),
   };
   

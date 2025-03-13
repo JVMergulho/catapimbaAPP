@@ -6,5 +6,7 @@ export default {
     profilePic: require("@/assets/images/profilePic.png"),
     capiOuro: require("@/assets/images/capiOuro.png"),
     qrCode: require("@/assets/images/qrCode.png"),
+    cupom: require("@/assets/images/cupom.png"),
+    gift: require("@/assets/images/gift.png"),
   };
   
