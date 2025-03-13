@@ -20,5 +20,7 @@ export default {
     eye: require("@/assets/icons/eye.png"),
     eyeSlash: require("@/assets/icons/eyeSlash.png"),
     shinyCoin: require("@/assets/icons/shinyCoin.png"),
+    logoConecta: require("@/assets/images/logoConecta.png"),
+    wave: require("@/assets/images/wave.png"),
   };
   
